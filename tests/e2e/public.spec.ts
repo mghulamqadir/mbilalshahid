@@ -1,2 +1,0 @@
-import { expect, test } from "@playwright/test";
-test("public routes have a primary heading and no horizontal overflow", async ({ page }) => { for (const path of ["/", "/results", "/services", "/how-i-work", "/about", "/book", "/contact", "/faq", "/privacy"]) { await page.goto(path); await expect(page.locator("h1").first()).toBeVisible(); expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true); } });

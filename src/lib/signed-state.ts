@@ -1,5 +1,0 @@
-import "server-only";
-import { createHmac, timingSafeEqual } from "node:crypto";
-import { requireEnv } from "@/lib/env";
-export function signState(payload: Record<string, unknown>, ttlSeconds = 600) { const body = Buffer.from(JSON.stringify({ ...payload, exp: Math.floor(Date.now() / 1000) + ttlSeconds })).toString("base64url"); const signature = createHmac("sha256", requireEnv("PAYLOAD_SECRET")).update(body).digest("base64url"); return `${body}.${signature}`; }
-export function verifyState(value: string) { const [body, signature] = value.split("."); if (!body || !signature) return null; const expected = createHmac("sha256", requireEnv("PAYLOAD_SECRET")).update(body).digest(); const supplied = Buffer.from(signature, "base64url"); if (expected.length !== supplied.length || !timingSafeEqual(expected, supplied)) return null; const parsed = JSON.parse(Buffer.from(body, "base64url").toString("utf8")) as { exp: number } & Record<string, unknown>; return parsed.exp >= Date.now() / 1000 ? parsed : null; }

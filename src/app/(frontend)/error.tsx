@@ -1,2 +1,0 @@
-"use client";
-export default function ErrorPage({ reset }: { error: Error & { digest?: string }; reset: () => void }) { return <section className="page-hero section--light"><div className="container"><p className="mono-label">Error / recoverable</p><h1>SOMETHING<br />INTERRUPTED.</h1><p className="lead">The page could not finish loading. Your data was not submitted again automatically.</p><button className="button" onClick={reset}>Try again</button></div></section>; }
