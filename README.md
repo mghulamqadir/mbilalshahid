@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BS. / Growth Systems
 
-## Getting Started
+Production portfolio and publishing system for Bilal Shahid. The application uses Next.js 16, React 19, Payload 3, MongoDB Atlas, Cloudinary, and Brevo transactional email. Consultation requests are handled through the inquiry form; there is no automated scheduler, payment, or third-party analytics functionality.
 
-First, run the development server:
+## Local setup
+
+Use Node 24.22.0 in WSL 2 or a native environment. The WSL 1 Windows Node bridge is not supported.
 
 ```bash
+nvm use
+cp .env.example .env.local
+npm install
+npm run generate:types
+npm run generate:importmap
+npm run seed
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+MongoDB must be reachable before Payload, seeding, or contact APIs can run. The public seed-rendered pages can still be built without provider credentials. `/book` sends visitors to the inquiry flow so calls can be arranged personally.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Commands
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run typecheck
+npm run lint
+npm test
+npm run build
+npm run test:e2e
+```
 
-## Learn More
+`npm run seed` is idempotent for cases and services. When all three bootstrap variables are present, it creates the first allow-listed owner with TOTP enabled. `ADMIN_EMAILS` remains the permanent account allow-list; `ADMIN_INITIAL_PASSWORD` and `ADMIN_TOTP_SECRET` are one-time bootstrap values and should be removed from the deployment after the owner account exists.
 
-To learn more about Next.js, take a look at the following resources:
+## Production activation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Create a paid MongoDB Atlas deployment in the selected region, enable backups, restrict network access, and set `DATABASE_URI`.
+2. Create unique `PAYLOAD_SECRET` and `PREVIEW_SECRET` values. Generate `INTEGRATION_ENCRYPTION_KEY` as exactly 32 random bytes encoded in base64.
+3. Verify a Brevo sender/domain, create an API key restricted to transactional email, and configure Cloudinary upload restrictions.
+4. Set every `.env.example` variable in Vercel. Do not expose server variables with a `NEXT_PUBLIC_` prefix.
+5. Deploy, seed once, and sign in at `/admin-sign-in`.
+6. In Atlas, create a TTL index with `expireAfterSeconds: 0` on `rate-limits.expiresAt`. Lead retention timestamps are policy markers; confirm deletions before enabling any automatic 24-month TTL.
+7. Test inquiry storage and Brevo delivery before launch. Email failures do not affect the saved inquiry and require manual follow-up from Payload admin.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Content and assets
 
-## Deploy on Vercel
+Typed source content lives in `src/content/seed.ts`. Payload is the production publishing source; public queries must only request published records. Development may fall back to the typed seed when the database is empty.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The portrait and case evidence are intentionally labeled `TODO_ASSET`. Follow [OUTSTANDING_ASSETS.md](./OUTSTANDING_ASSETS.md) before replacement: obtain permission, redact private data, upload through the signed Cloudinary flow, supply alt text, and publish only a transformed derivative. Never replace these with generated testimonials, logos, identities, or dashboard screenshots.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Admin and security
+
+- Only emails in `ADMIN_EMAILS` can be created.
+- The bootstrap password and TOTP secret exist only to create the first owner without temporarily opening public admin registration. Remove both values after seeding.
+- Owners can publish and manage settings; editors can save drafts only.
+- Password login is rejected until a user has an encrypted TOTP secret, and every login requires the dedicated TOTP route.
+- Admin TOTP secrets use AES-256-GCM encryption at rest.
+- Public Payload reads filter to published content. Preview links are signed, short-lived, `noindex`, and `no-store`.
+- Public inquiry submissions use MongoDB-backed, expiring IP rate limits.
+
+See [DECISIONS.md](./DECISIONS.md) for architecture and launch decisions.

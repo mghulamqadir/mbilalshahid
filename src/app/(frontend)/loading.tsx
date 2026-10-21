@@ -1,0 +1,1 @@
+export default function Loading() { return <section className="page-hero section--dark" aria-busy="true"><div className="container"><p className="mono-label">Loading / please wait</p><h1>BUILDING<br />THE VIEW.</h1></div></section>; }
