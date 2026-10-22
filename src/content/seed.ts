@@ -123,7 +123,7 @@ export const site = {
   // Publish direct phone/WhatsApp contact only after the owner has explicitly approved it.
   phone: undefined,
   whatsappUrl: undefined,
-  location: "US & UK Markets (Remote Operator)",
+  location: "US & UK Markets",
   experienceYears: "4+",
   maxShopsParallel: "5",
   disclaimer: "Independent specialist. Not affiliated with, endorsed by, or sponsored by TikTok.",
@@ -322,7 +322,7 @@ export const cases: CaseStudy[] = [
       { handle: "@jp.field.tested", note: "High AOV bundle converter" },
     ],
     cardData: {
-      thumbnail: "/media/cases/thumb-apparel-q4.jpg",
+      thumbnail: "/media/cases/thumb-apparel-q4.png",
       pillTag: "Contemporary Apparel",
       cardTitle: "US Apparel Brand (Q4)",
       primaryValue: "$616,780",
@@ -399,7 +399,7 @@ export const cases: CaseStudy[] = [
       { handle: "@kayla_wellnesfinds", gmv: 3990, note: "Wellness and supplement reviewer" },
     ],
     cardData: {
-      thumbnail: "/media/cases/thumb-sports-nutrition.jpg",
+      thumbnail: "/media/cases/thumb-sports-nutrition.png",
       pillTag: "Sports Nutrition",
       cardTitle: "US Sports Nutrition",
       primaryValue: "$91,030",
@@ -476,7 +476,7 @@ export const cases: CaseStudy[] = [
       { handle: "@sabinagilman1998", gmv: 837, note: "Fashion try-on showcase" },
     ],
     cardData: {
-      thumbnail: "/media/cases/thumb-premium-apparel.jpg",
+      thumbnail: "/media/cases/thumb-premium-apparel.png",
       pillTag: "Premium Apparel",
       cardTitle: "US Premium Apparel",
       primaryValue: "$129K",
@@ -555,7 +555,7 @@ export const cases: CaseStudy[] = [
       { handle: "@annaschae.finds", note: "Jewellery-native creator with strong niche authority" },
     ],
     cardData: {
-      thumbnail: "/media/cases/thumb-jewellery.jpg",
+      thumbnail: "/media/cases/thumb-jewellery.png",
       pillTag: "Fine Jewellery",
       cardTitle: "US Jewellery Brand",
       primaryValue: "$14.7K",
@@ -633,7 +633,7 @@ export const cases: CaseStudy[] = [
       { handle: "@marora.tk11", gmv: 99, note: "Everyday essentials tester" },
     ],
     cardData: {
-      thumbnail: "/media/cases/thumb-beauty.jpg",
+      thumbnail: "/media/cases/thumb-beauty.png",
       pillTag: "Beauty",
       cardTitle: "US Beauty Brand",
       primaryValue: "$7.5K",

@@ -31,12 +31,9 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 w-full border-b border-[#DDD3D7]/70 bg-[#FAF8F4]/90 backdrop-blur-md transition-all">
       <div className="container-editorial flex h-20 items-center justify-between">
         {/* Brand Mark */}
-        <Link href="/" className="group flex flex-col">
-          <span className="font-editorial text-2xl font-semibold tracking-tight text-[#241B24] transition-colors group-hover:text-[#51284B]">
+        <Link href="/" className="group flex items-center">
+          <span className="font-editorial text-2xl sm:text-[28px] font-semibold tracking-tight text-[#241B24] transition-colors group-hover:text-[#51284B]">
             {site.name}
-          </span>
-          <span className="text-[11px] font-medium uppercase tracking-widest text-[#746970]">
-            TikTok Shop & Creator Commerce
           </span>
         </Link>
 
