@@ -60,6 +60,10 @@ body {
   font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+.font-handwriting {
+  font-family: var(--font-handwriting), cursive, sans-serif;
+}
+
 /* Headings: inherit color by default so utility classes and dark container themes are never overridden */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-editorial), Georgia, serif;

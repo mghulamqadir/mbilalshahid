@@ -1,86 +1,118 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { heroProof, platformTools, operatingSystemSteps } from "@/content/seed";
-import { getFeaturedCases } from "@/features/content/queries";
-import { ArrowUpRight, ArrowRight, SectionHeading, ButtonLink } from "@/components/ui/primitives";
+import { cases, heroProof, operatingSystemSteps } from "@/content/seed";
+import {
+  ArrowRight,
+  BarChart3,
+  Users,
+  Play,
+  ShoppingBag,
+  Settings,
+  Target,
+} from "lucide-react";
 import { ClosingCta } from "@/components/ui/closing-cta";
 
-export default async function HomePage() {
-  const featuredCases = await getFeaturedCases();
+export default function HomePage() {
+  const stepIcons = [Users, Play, ShoppingBag, BarChart3, Settings];
+
+  const brandLogos = [
+    { name: "TikTok Shop", font: "font-semibold tracking-tight" },
+    { name: "shopify", font: "font-bold lowercase tracking-tighter" },
+    { name: "amazon", font: "font-bold lowercase tracking-normal" },
+    { name: "klaviyo", font: "font-medium lowercase tracking-wide" },
+    { name: "Later", font: "font-semibold tracking-tight" },
+    { name: "Euka", font: "font-bold tracking-tight" },
+    { name: "FastMoss", font: "font-semibold tracking-tight" },
+    { name: "CapCut", font: "font-bold tracking-tight" },
+    { name: "LTK", font: "font-black tracking-widest" },
+  ];
 
   return (
     <>
       {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28">
+      <section className="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24 bg-[#FAF8F4]">
         <div className="container-editorial">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Hero Copy (Left) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            {/* Hero Left Column */}
             <div className="lg:col-span-7 flex flex-col items-start">
-              <div className="badge-editorial mb-6">
+              {/* Category Pill Tag */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFFCF8] border border-[#DDD3D7] text-[10px] sm:text-[11px] font-semibold tracking-widest text-[#51284B] uppercase mb-6 shadow-2xs">
                 TIKTOK SHOP · CREATOR COMMERCE · DTC GROWTH
               </div>
 
-              <h1 className="font-editorial text-4xl sm:text-6xl lg:text-7xl font-normal leading-[1.08] text-[#241B24] tracking-tight mb-6">
+              {/* Editorial Headline */}
+              <h1 className="font-editorial text-4xl sm:text-6xl lg:text-[72px] font-normal leading-[1.06] text-[#241B24] tracking-tight mb-6">
                 Turning Attention Into{" "}
                 <span className="italic font-normal text-[#35172F]">
-                  Measurable Commerce Growth.
+                  Lasting Brands.
                 </span>
               </h1>
 
-              <p className="text-lg sm:text-xl text-[#746970] max-w-2xl leading-relaxed mb-8 font-light">
-                Full-funnel TikTok Shop operations and creator ecosystem architect for US DTC brands.
-                From rigorous creator sourcing and sample scoring to daily video cadence and GMV Max scaling.
+              {/* Subheading */}
+              <p className="text-base sm:text-lg text-[#746970] max-w-xl leading-relaxed mb-8 font-light">
+                I help consumer brands and founders grow on TikTok Shop through creator partnerships,
+                content-driven commerce, and performance systems that scale.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto">
-                <ButtonLink href="/contact" variant="primary">
+              {/* Call-to-Action Buttons */}
+              <div className="flex flex-wrap items-center gap-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm bg-[#35172F] text-[#FAF8F4] hover:bg-[#4A1E45] transition-all shadow-sm"
+                >
                   <span>Work With Me</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </ButtonLink>
-                <ButtonLink href="/results" variant="secondary">
-                  <span>Explore Results</span>
                   <ArrowRight className="w-4 h-4" />
-                </ButtonLink>
-              </div>
-
-              {/* Sub-hero badge */}
-              <div className="mt-10 pt-6 border-t border-[#DDD3D7]/70 flex items-center gap-4 text-xs text-[#746970]">
-                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>US & UK TikTok Shop and creator-commerce operations</span>
+                </Link>
+                <Link
+                  href="/results"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm bg-[#FFFCF8] text-[#241B24] border border-[#DDD3D7] hover:border-[#35172F] transition-all shadow-2xs"
+                >
+                  <span>View Case Studies</span>
+                </Link>
               </div>
             </div>
 
-            {/* Hero Arch Portrait (Right) */}
+            {/* Hero Right Column (Aura Backdrop + Bilal Cutout + Handwriting + Floating Quote) */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-sm sm:max-w-md">
-                {/* Layered decorative background arch */}
-                <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-t-[160px] rounded-b-2xl bg-[#DCC9DA]/60 -z-10" />
+              <div className="relative w-full max-w-[420px] aspect-[4/5] flex items-end justify-center">
+                {/* Sweeping Plum/Lavender Gradient Aura */}
+                <div className="absolute top-4 inset-x-2 bottom-0 rounded-t-[220px] rounded-b-3xl bg-gradient-to-tr from-[#3D1A36] via-[#6B2F5C] to-[#E2D0DD] opacity-95 shadow-2xl" />
 
-                {/* Main Portrait Arch Container */}
-                <div className="relative rounded-t-[160px] rounded-b-2xl overflow-hidden bg-gradient-to-b from-[#E6D8E4] to-[#DCC9DA] border border-[#DDD3D7] shadow-xl aspect-[3/4] flex items-end justify-center">
-                  <Image
-                    src="/media/portrait/bilal-shahid.png"
-                    alt="Bilal Shahid — TikTok Shop & Creator Growth Specialist"
-                    width={512}
-                    height={512}
-                    priority
-                    className="w-full h-full object-cover object-top hover:scale-[1.02] transition-transform duration-500"
-                  />
-
-                  {/* Subtle lower vignette overlay for text legibility if needed */}
-                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#35172F]/20 to-transparent pointer-events-none" />
+                {/* Handwritten cursive annotation in upper right */}
+                <div className="absolute top-8 right-6 z-20 font-handwriting text-[#FAF8F4]/90 text-2xl md:text-3xl leading-tight select-none rotate-6 text-right drop-shadow">
+                  Creator<br />
+                  Commerce<br />
+                  Real Brands<br />
+                  Real Growth
                 </div>
 
-                {/* Floating Stat Pill on Portrait */}
-                <div className="absolute -bottom-5 -left-4 sm:left-4 bg-[#FFFCF8] border border-[#DDD3D7] rounded-xl px-4 py-3 shadow-lg flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-[#35172F] text-[#FAF8F4] flex items-center justify-center font-editorial font-bold text-lg">
-                    4+
+                {/* Bilal's transparent portrait cutout */}
+                <div className="relative z-10 w-full h-full flex items-end justify-center pointer-events-none">
+                  <Image
+                    src="/media/bilal-transparent.png"
+                    alt="Bilal Shahid — TikTok Shop Growth Operator"
+                    width={600}
+                    height={600}
+                    priority
+                    className="w-full h-auto max-h-[96%] object-contain object-bottom drop-shadow-2xl"
+                  />
+                </div>
+
+                {/* Floating Frosted Glass Card on bottom right */}
+                <div className="absolute -bottom-4 right-0 sm:right-2 z-30 bg-[#FFFCF8]/95 backdrop-blur-md border border-[#DDD3D7] rounded-2xl p-4 shadow-xl max-w-[240px]">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <div className="w-6 h-6 rounded-md bg-gradient-to-tr from-[#35172F] to-[#884279] flex items-center justify-center text-[#FAF8F4]">
+                      <BarChart3 className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-[11px] font-semibold text-[#241B24] tracking-tight">
+                      TikTok Shop Growth Operator
+                    </span>
                   </div>
-                  <div>
-                    <div className="text-xs font-semibold text-[#241B24]">Years Experience</div>
-                    <div className="text-[11px] text-[#746970]">UK & US TikTok Shop & Amazon</div>
-                  </div>
+                  <p className="text-xs text-[#51284B] italic leading-snug">
+                    &ldquo;Better creators. Stronger systems. Real revenue.&rdquo;
+                  </p>
+                  <div className="w-8 h-0.5 bg-[#51284B]/40 mt-2 rounded-full" />
                 </div>
               </div>
             </div>
@@ -88,241 +120,277 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 2. SOURCE-BACKED HERO PROOF BANNER */}
-      <section className="border-y border-[#DDD3D7] bg-[#FFFCF8] py-12 md:py-16">
+      {/* 2. STATS ROW */}
+      <section className="border-y border-[#DDD3D7] bg-[#FFFCF8] py-8 md:py-10">
         <div className="container-editorial">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8 divide-y md:divide-y-0 md:divide-x divide-[#DDD3D7]/70">
             {heroProof.map((stat, idx) => (
-              <div key={idx} className="flex flex-col border-l-2 border-[#51284B]/20 pl-4 sm:pl-6">
-                <div className="flex items-baseline gap-1.5">
-                  <span className="font-editorial text-3xl sm:text-4xl md:text-5xl font-semibold text-[#35172F]">
-                    {stat.number}
-                  </span>
-                  <span className="text-xs uppercase tracking-wider font-semibold text-[#51284B]">
-                    {stat.unit}
-                  </span>
+              <div key={idx} className={`${idx !== 0 ? "md:pl-6 pt-4 md:pt-0" : ""}`}>
+                <div className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#35172F]">
+                  {stat.number}
                 </div>
-                <span className="mt-1 text-sm font-medium text-[#241B24]">
+                <div className="text-xs sm:text-sm font-medium text-[#241B24] mt-1">
                   {stat.label}
-                </span>
-                <span className="mt-0.5 text-xs text-[#746970]">
-                  {stat.subtext}
-                </span>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3. PLATFORM & TOOL FAMILIARITY STRIP */}
-      <section className="py-12 bg-[#FAF8F4]">
-        <div className="container-editorial text-center">
-          <span className="text-[11px] font-semibold uppercase tracking-widest text-[#746970] mb-6 block">
-            PLATFORMS & TOOLS USED
+      {/* 3. TRUSTED PLATFORMS & TOOLS */}
+      <section className="py-8 bg-[#FAF8F4] border-b border-[#DDD3D7]/60">
+        <div className="container-editorial flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <span className="text-[11px] font-semibold uppercase tracking-widest text-[#746970] shrink-0">
+            TRUSTED PLATFORMS &amp; TOOLS
           </span>
-          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 max-w-4xl mx-auto">
-            {platformTools.map((tool, idx) => (
-              <div
-                key={idx}
-                className="bg-[#FFFCF8] border border-[#DDD3D7] px-4 py-2 rounded-full text-xs font-medium text-[#241B24] shadow-2xs hover:border-[#51284B] transition-colors"
-              >
-                {tool.name}
-              </div>
+          <div className="flex flex-wrap items-center gap-6 sm:gap-8 text-sm sm:text-base text-[#241B24]/80">
+            {brandLogos.map((brand, idx) => (
+              <span key={idx} className={`${brand.font} hover:text-[#35172F] transition-colors select-none`}>
+                {brand.name}
+              </span>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 4. DEEP-PLUM OPERATING SYSTEM PANEL */}
-      <section className="py-20 md:py-28 bg-[#35172F] text-[#FAF8F4] relative overflow-hidden">
-        <div className="container-editorial relative z-10">
-          <SectionHeading
-            eyebrow="Operating Methodology"
-            title="The 5-Step Creator Engine"
-            subtitle="A disciplined operating approach to creator velocity and affiliate GMV."
-            inverted
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-12">
-            {operatingSystemSteps.map((step, idx) => (
-              <div
-                key={idx}
-                className="bg-[#51284B]/40 border border-[#51284B] rounded-xl p-6 flex flex-col justify-between hover:bg-[#51284B]/70 transition-all duration-300"
-              >
-                <div>
-                  <span className="font-editorial text-2xl font-bold text-[#DCC9DA] mb-3 block">
-                    {step.step}
-                  </span>
-                  <h3 className="font-editorial text-lg text-[#FAF8F4] mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-xs text-gray-300 leading-relaxed font-light mb-6">
-                    {step.description}
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-[#51284B]/60">
-                  <span className="text-[10px] uppercase font-semibold text-[#DCC9DA] block mb-2">
-                    Key Outputs:
-                  </span>
-                  <ul className="space-y-1">
-                    {step.deliverables.map((item, dIdx) => (
-                      <li key={dIdx} className="text-[11px] text-gray-300 flex items-start gap-1.5">
-                        <span className="text-[#DCC9DA] mt-0.5">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <Link
-              href="/process"
-              className="inline-flex items-center gap-2 text-sm font-medium text-[#DCC9DA] hover:text-[#FAF8F4] underline underline-offset-4"
-            >
-              <span>Explore the complete working methodology</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. FEATURED CASE STUDIES */}
-      <section className="py-20 md:py-28 bg-[#FAF8F4]">
+      {/* 4. MY OPERATING SYSTEM (Deep Plum Horizontal Steps) */}
+      <section className="py-20 md:py-24 bg-[#2A1224] text-[#FAF8F4] relative overflow-hidden">
         <div className="container-editorial">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16">
-            <SectionHeading
-              eyebrow="Observed Performance"
-              title="Source-Backed Case Studies"
-              subtitle="Client operations documented with dated Seller Center and Kalodata dashboard evidence."
-            />
-            <Link
-              href="/results"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-[#35172F] hover:text-[#51284B] underline underline-offset-4 mb-4 md:mb-16"
-            >
-              <span>View all 5 case dossiers</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+          {/* Section Header */}
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-16">
+            <div>
+              <span className="text-[11px] uppercase tracking-widest font-semibold text-[#DCC9DA] block mb-2">
+                MY OPERATING SYSTEM
+              </span>
+              <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl text-[#FAF8F4] leading-tight">
+                From Creators to<br className="hidden sm:inline" /> Compounding Growth.
+              </h2>
+            </div>
+            <div className="max-w-md md:text-right flex flex-col md:items-end gap-3">
+              <Link
+                href="/process"
+                className="inline-flex items-center gap-1.5 text-xs uppercase font-semibold text-[#DCC9DA] hover:text-[#FAF8F4] tracking-wider"
+              >
+                <span>THE PROCESS</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+              <p className="text-xs sm:text-sm text-[#DCC9DA]/90 font-light leading-relaxed">
+                A structured, end-to-end approach to grow brands on TikTok Shop — combining creative, creators, commerce, and data.
+              </p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {featuredCases.map((study) => (
-              <article
-                key={study.slug}
-                className="card-editorial flex flex-col justify-between overflow-hidden group"
-              >
-                <div>
-                  {/* Card Header Media Preview */}
-                  <div className="relative w-full aspect-[16/10] bg-[#EEE5E1] border-b border-[#DDD3D7] overflow-hidden" style={{ position: "relative" }}>
-                    {study.evidence[0] ? (
-                      <Image
-                        src={`/media/cases/${study.evidence[0].filename}`}
-                        alt={study.evidence[0].title}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 400px"
-                        className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-[#746970] text-xs">
-                        Dashboard Evidence
+          {/* 5 Connected Circular Steps */}
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4 relative">
+            {operatingSystemSteps.map((step, idx) => {
+              const IconComp = stepIcons[idx] || Users;
+              return (
+                <div key={idx} className="flex flex-col items-start relative group">
+                  {/* Circle + connecting arrow */}
+                  <div className="flex items-center w-full mb-4">
+                    <div className="w-14 h-14 rounded-full bg-[#FAF8F4] flex items-center justify-center text-[#35172F] shadow-lg shrink-0 group-hover:scale-105 transition-transform">
+                      <IconComp className="w-6 h-6" />
+                    </div>
+                    {idx < operatingSystemSteps.length - 1 && (
+                      <div className="hidden md:flex flex-1 items-center px-2">
+                        <div className="w-full h-[1px] bg-[#DCC9DA]/30 relative">
+                          <ArrowRight className="w-3.5 h-3.5 text-[#DCC9DA]/60 absolute right-0 -top-[7px]" />
+                        </div>
                       </div>
                     )}
-                    <div className="absolute top-3 left-3 bg-[#35172F]/90 text-[#FAF8F4] text-[11px] font-semibold px-2.5 py-1 rounded">
-                      {study.period.label}
-                    </div>
                   </div>
 
-                  {/* Card Content */}
-                  <div className="p-6">
-                    <span className="text-xs uppercase font-semibold text-[#51284B] tracking-wider block mb-1">
-                      {study.sector}
-                    </span>
-                    <h3 className="font-editorial text-xl text-[#241B24] mb-3 group-hover:text-[#35172F] transition-colors leading-snug">
-                      {study.title}
-                    </h3>
-                    <p className="text-xs text-[#746970] leading-relaxed mb-6 line-clamp-3">
-                      {study.summary}
-                    </p>
-
-                    {/* Headline KPI highlight box */}
-                    <div className="bg-[#FAF8F4] border border-[#DDD3D7] rounded-lg p-3.5 mb-4">
-                      <div className="text-[10px] uppercase font-semibold text-[#746970] tracking-wider">
-                        {study.outcomeType}
-                      </div>
-                      <div className="font-editorial text-2xl font-bold text-[#35172F]">
-                        {study.headlineOutcome}
-                      </div>
-                    </div>
-                  </div>
+                  {/* Step Title & Description */}
+                  <h3 className="font-editorial text-base sm:text-lg text-[#FAF8F4] font-semibold mb-1">
+                    {step.step} {step.shortTitle || step.title}
+                  </h3>
+                  <p className="text-xs text-[#DCC9DA] leading-relaxed font-light">
+                    {step.shortDesc || step.description}
+                  </p>
                 </div>
-
-                {/* Card Action */}
-                <div className="p-6 pt-0 border-t border-[#DDD3D7]/50 mt-auto flex items-center justify-between text-xs font-semibold text-[#35172F]">
-                  <Link
-                    href={`/results/${study.slug}`}
-                    className="inline-flex items-center gap-1.5 hover:text-[#51284B]"
-                  >
-                    <span>Read full case dossier</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                  <span className="text-[#746970] font-normal">{study.code}</span>
-                </div>
-              </article>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* 6. ABOUT PREVIEW SECTION */}
-      <section className="py-20 bg-[#FFFCF8] border-t border-[#DDD3D7]">
+      {/* 5. REAL RESULTS (Featured Case Studies) */}
+      <section className="py-20 md:py-24 bg-[#FAF8F4]">
         <div className="container-editorial">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-64 sm:w-80 aspect-square rounded-2xl overflow-hidden border border-[#DDD3D7] shadow-md bg-[#FAF8F4]" style={{ position: "relative" }}>
-                <Image
-                  src="/media/portrait/bilal-shahid.png"
-                  alt="Bilal Shahid portrait"
-                  fill
-                  sizes="320px"
-                  className="object-cover"
-                />
+          {/* Header */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+            <div>
+              <span className="text-[11px] uppercase tracking-widest font-semibold text-[#51284B] block mb-2">
+                REAL RESULTS
+              </span>
+              <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl text-[#241B24]">
+                Featured Case Studies
+              </h2>
+            </div>
+            <Link
+              href="/results"
+              className="inline-flex items-center gap-1.5 text-xs uppercase font-semibold text-[#35172F] hover:text-[#51284B] tracking-wider"
+            >
+              <span>VIEW ALL CASE STUDIES</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          {/* 5 Case Study Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+            {[
+              cases.find((c) => c.slug === "beauty-brand-ramp-up"),
+              cases.find((c) => c.slug === "contemporary-apparel-q4"),
+              cases.find((c) => c.slug === "fine-jewellery-aesthetic-pipeline"),
+              cases.find((c) => c.slug === "premium-apparel-lean-sampling"),
+              cases.find((c) => c.slug === "sports-nutrition-affiliate-first"),
+            ]
+              .filter(Boolean)
+              .map((study) => {
+                if (!study) return null;
+                const card = study.cardData || {
+                  thumbnail: "/media/cases/thumb-apparel-q4.jpg",
+                  pillTag: study.sector,
+                  cardTitle: study.sector,
+                  primaryValue: study.headlineOutcome,
+                  primaryLabel: study.outcomeType,
+                  stats: [],
+                };
+
+              return (
+                <article
+                  key={study.slug}
+                  className="bg-[#FFFCF8] border border-[#DDD3D7] rounded-2xl overflow-hidden hover:shadow-xl hover:border-[#51284B]/40 transition-all duration-300 flex flex-col justify-between group"
+                >
+                  <div>
+                    {/* Thumbnail Image with Pill Tag */}
+                    <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#EEE5E1]" style={{ position: "relative" }}>
+                      <Image
+                        src={card.thumbnail}
+                        alt={card.cardTitle}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 300px"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute top-2.5 right-2.5 bg-[#FAF8F4]/90 backdrop-blur-xs text-[#241B24] text-[10px] font-semibold px-2 py-0.5 rounded-full shadow-2xs">
+                        {card.pillTag}
+                      </div>
+                    </div>
+
+                    {/* Card Body */}
+                    <div className="p-4">
+                      <div className="flex items-start justify-between gap-2 mb-2">
+                        <div>
+                          <h3 className="text-xs font-semibold text-[#241B24] tracking-tight">
+                            {card.cardTitle}
+                          </h3>
+                          <div className="font-editorial text-2xl font-bold text-[#35172F] mt-1 leading-none">
+                            {card.primaryValue}
+                          </div>
+                          <span className="text-[10px] text-[#746970] block mt-0.5">
+                            {card.primaryLabel}
+                          </span>
+                        </div>
+                        <Link
+                          href={`/results/${study.slug}`}
+                          className="w-7 h-7 rounded-full bg-[#FAF8F4] border border-[#DDD3D7] flex items-center justify-center text-[#35172F] group-hover:bg-[#35172F] group-hover:text-[#FAF8F4] transition-colors shrink-0 mt-0.5"
+                          aria-label={`View dossier for ${card.cardTitle}`}
+                        >
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 3 Bottom Metrics */}
+                  <div className="border-t border-[#DDD3D7]/60 p-3 bg-[#FAF8F4]/50 grid grid-cols-3 divide-x divide-[#DDD3D7]/60 text-center">
+                    {card.stats.map((s, sIdx) => (
+                      <div key={sIdx} className="px-1">
+                        <div className="text-xs font-bold text-[#241B24]">{s.value}</div>
+                        <div className="text-[9px] text-[#746970] leading-tight line-clamp-1">{s.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. ABOUT SECTION (Side-by-Side with Circular Portrait, Badges, Postcard Note) */}
+      <section className="py-20 md:py-24 bg-[#FFFCF8] border-t border-[#DDD3D7]">
+        <div className="container-editorial">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            {/* Left: Circular Portrait with Handwriting Signature */}
+            <div className="lg:col-span-3 flex justify-center">
+              <div className="relative">
+                <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden border-4 border-[#FAF8F4] shadow-xl relative" style={{ position: "relative" }}>
+                  <Image
+                    src="/media/portrait/bilal-circle.png"
+                    alt="Bilal Shahid portrait"
+                    fill
+                    sizes="240px"
+                    className="object-cover"
+                  />
+                </div>
+                {/* Handwritten signature overlay */}
+                <div className="absolute -bottom-2 -left-4 z-20 font-handwriting text-[#51284B] text-3xl sm:text-4xl -rotate-12 select-none font-bold drop-shadow-sm">
+                  Bilal<br />
+                  Shahid
+                </div>
               </div>
             </div>
 
-            <div className="lg:col-span-7">
-              <span className="badge-editorial mb-4">The Operator</span>
-              <h2 className="font-editorial text-3xl sm:text-4xl text-[#241B24] mb-6">
-                Disciplined execution over vanity metrics.
+            {/* Middle: Bio & Feature Badges */}
+            <div className="lg:col-span-6">
+              <span className="text-[11px] uppercase tracking-widest font-semibold text-[#51284B] block mb-2">
+                ABOUT
+              </span>
+              <h2 className="font-editorial text-2xl sm:text-3xl lg:text-4xl text-[#241B24] mb-4 leading-tight">
+                Operator. Creator Commerce Specialist. Brand Builder.
               </h2>
-              <p className="text-base text-[#746970] leading-relaxed mb-6">
-                With 4+ years spanning both brand-side and agency environments in the UK & US markets,
-                I run the end-to-end TikTok Shop engine: product validation, creator sourcing, sample
-                approvals, affiliate activation, and performance advertising.
-              </p>
-              <p className="text-base text-[#746970] leading-relaxed mb-8">
-                Backed by an <strong>MBA in Marketing & Branding from COMSATS University</strong>, my
-                work treats social commerce as a rigorous, accountable sales channel—not a one-off promotional stunt.
+              <p className="text-xs sm:text-sm text-[#746970] leading-relaxed mb-6 font-light">
+                I&apos;m Bilal Shahid, a TikTok Shop and DTC growth operator with 4+ years of experience helping consumer brands win in the creator economy. I combine creator strategy, content, and performance systems to turn attention into measurable revenue and long-term brand equity.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4">
-                <ButtonLink href="/about" variant="primary">
-                  <span>Full Biography & Timeline</span>
-                  <ArrowRight className="w-4 h-4" />
-                </ButtonLink>
-                <ButtonLink href="/resume" variant="outline">
-                  <span>Download Resume (PDF)</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </ButtonLink>
+              {/* 3 Feature Badges */}
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#FAF8F4] border border-[#DDD3D7] text-xs font-medium text-[#241B24]">
+                  <Target className="w-3.5 h-3.5 text-[#51284B]" />
+                  <span>Results-Driven Execution</span>
+                </div>
+                <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#FAF8F4] border border-[#DDD3D7] text-xs font-medium text-[#241B24]">
+                  <Users className="w-3.5 h-3.5 text-[#51284B]" />
+                  <span>Deep Creator Network</span>
+                </div>
+                <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#FAF8F4] border border-[#DDD3D7] text-xs font-medium text-[#241B24]">
+                  <BarChart3 className="w-3.5 h-3.5 text-[#51284B]" />
+                  <span>Strategic &amp; Hands-On Partnership</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Postcard Note ("BEYOND CAMPAIGNS") */}
+            <div className="lg:col-span-3">
+              <div className="bg-[#FAF8F4] border border-[#DDD3D7] rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+                <div>
+                  <span className="text-[10px] uppercase tracking-widest font-semibold text-[#746970] block mb-3">
+                    BEYOND CAMPAIGNS
+                  </span>
+                  <p className="font-editorial italic text-base sm:text-lg text-[#241B24] leading-snug mb-4">
+                    &ldquo;I partner with founders and teams to build real brands — not just viral moments.&rdquo;
+                  </p>
+                </div>
+                <div className="w-8 h-0.5 bg-[#51284B]/40 rounded-full" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 7. CLOSING CTA */}
+      {/* 7. CLOSING CTA BANNER */}
       <ClosingCta />
     </>
   );

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display, Inter, Caveat } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -14,6 +14,12 @@ const playfair = Playfair_Display({
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-handwriting",
   display: "swap",
 });
 
@@ -39,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${inter.variable} ${caveat.variable}`}>
       <body className="min-h-screen flex flex-col bg-[#FAF8F4] text-[#241B24]">
         <SiteHeader />
         <main className="flex-1">{children}</main>

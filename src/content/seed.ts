@@ -46,6 +46,15 @@ export type TopCreator = {
   avatarText?: string;
 };
 
+export type CaseCardData = {
+  thumbnail: string;
+  pillTag: string;
+  cardTitle: string;
+  primaryValue: string;
+  primaryLabel: string;
+  stats: { value: string; label: string }[];
+};
+
 export type CaseStudy = {
   slug: string;
   code: string;
@@ -67,6 +76,7 @@ export type CaseStudy = {
   featuredOrder?: number;
   evidence: CaseEvidence[];
   topCreators: TopCreator[];
+  cardData?: CaseCardData;
 };
 
 export type CareerRole = {
@@ -119,11 +129,10 @@ export const site = {
   disclaimer: "Independent specialist. Not affiliated with, endorsed by, or sponsored by TikTok.",
   nav: [
     { label: "Home", href: "/" },
-    { label: "Work", href: "/results" },
-    { label: "Services", href: "/services" },
-    { label: "Process", href: "/process" },
     { label: "About", href: "/about" },
-    { label: "Resume", href: "/resume" },
+    { label: "What I Do", href: "/services" },
+    { label: "Case Studies", href: "/results" },
+    { label: "Insights", href: "/process" },
     { label: "Contact", href: "/contact" },
   ],
 };
@@ -132,26 +141,32 @@ export const heroProof = [
   {
     number: "4+",
     unit: "Years",
-    label: "Multichannel E-commerce",
+    label: "Years Experience",
     subtext: "UK & US brand-side & agency operations",
   },
   {
     number: "5",
     unit: "Shops",
-    label: "Managed in Parallel",
-    subtext: "Up to 5 shops managed in parallel (historical peak)",
+    label: "Active Shops Managed in Parallel",
+    subtext: "Up to 5 shops managed in parallel",
   },
   {
-    number: "$616,780",
+    number: "$616K",
     unit: "GMV",
-    label: "Creator-Attributed GMV",
+    label: "Highest Creator Attributed GMV",
     subtext: "Contemporary Apparel — Q4 peak shopping",
   },
   {
-    number: "475",
-    unit: "Affiliates",
-    label: "Active Affiliates Activated",
-    subtext: "95.47% affiliate-driven sports nutrition share",
+    number: "30%+",
+    unit: "MoM",
+    label: "Average MoM Growth",
+    subtext: "Technisia full-funnel TikTok Shop operations",
+  },
+  {
+    number: "200+",
+    unit: "Creators",
+    label: "Creators Activated",
+    subtext: "Active affiliate roster across lifestyle & apparel",
   },
 ];
 
@@ -195,6 +210,9 @@ export const platformTools = [
 export const operatingSystemSteps = [
   {
     step: "01",
+    shortTitle: "Creator Strategy",
+    shortDesc: "Find the right creators and winning angles.",
+    icon: "users",
     title: "Creator Discovery & Scoring",
     description:
       "Aesthetic and category-fit pipeline across TikTok Shop, Instagram, and LTK. Rigorous qualification using GMV, post-rate, and audience resonance rubrics.",
@@ -202,6 +220,9 @@ export const operatingSystemSteps = [
   },
   {
     step: "02",
+    shortTitle: "Content & Testing",
+    shortDesc: "Produce, test and iterate high-converting content.",
+    icon: "play",
     title: "Samples & PR Logistics",
     description:
       "Disciplined sample approvals preventing wasted seeding budget. End-to-end fulfillment tracking and post-send follow-through until video goes live.",
@@ -209,6 +230,9 @@ export const operatingSystemSteps = [
   },
   {
     step: "03",
+    shortTitle: "TikTok Shop Growth",
+    shortDesc: "Optimize listings, offers and creator distribution.",
+    icon: "shopping-bag",
     title: "Outreach & Activation",
     description:
       "In-voice personalized messaging at scale. Active collaboration chat, custom commission structures, and dormant affiliate re-engagement.",
@@ -216,6 +240,9 @@ export const operatingSystemSteps = [
   },
   {
     step: "04",
+    shortTitle: "Paid Amplification",
+    shortDesc: "Scale what works with TT Ads and retargeting.",
+    icon: "chart",
     title: "Shop, Content & Promotion",
     description:
       "Coordinating creator video cadence with Seller Center campaign centers, flash sales, product vouchers, and GMV Max advertising amplification.",
@@ -223,6 +250,9 @@ export const operatingSystemSteps = [
   },
   {
     step: "05",
+    shortTitle: "Repeat & Scale",
+    shortDesc: "Build systems for long-term growth.",
+    icon: "gear",
     title: "Weekly Reporting & Scaling",
     description:
       "Funnel diagnostics separating top-of-funnel reach from actual affiliate-attributed GMV. Double down on winning creators and prune low-converting seeds.",
@@ -291,6 +321,18 @@ export const cases: CaseStudy[] = [
       { handle: "@sharpafedc", note: "Product styling and live stream closer" },
       { handle: "@jp.field.tested", note: "High AOV bundle converter" },
     ],
+    cardData: {
+      thumbnail: "/media/cases/thumb-apparel-q4.jpg",
+      pillTag: "Contemporary Apparel",
+      cardTitle: "US Apparel Brand (Q4)",
+      primaryValue: "$616,780",
+      primaryLabel: "Creator Attributed GMV",
+      stats: [
+        { value: "1,661", label: "Creator Videos" },
+        { value: "210", label: "LIVE Streams" },
+        { value: "9,337", label: "Items Sold" },
+      ],
+    },
   },
   {
     slug: "sports-nutrition-affiliate-first",
@@ -356,6 +398,18 @@ export const cases: CaseStudy[] = [
       { handle: "@live2lovekim", gmv: 6560, note: "Lifestyle fitness integration" },
       { handle: "@kayla_wellnesfinds", gmv: 3990, note: "Wellness and supplement reviewer" },
     ],
+    cardData: {
+      thumbnail: "/media/cases/thumb-sports-nutrition.jpg",
+      pillTag: "Sports Nutrition",
+      cardTitle: "US Sports Nutrition",
+      primaryValue: "$91,030",
+      primaryLabel: "Revenue (Last 30 Days)",
+      stats: [
+        { value: "2.1M", label: "Video Views" },
+        { value: "898", label: "Orders" },
+        { value: "$102.04", label: "AOV" },
+      ],
+    },
   },
   {
     slug: "premium-apparel-lean-sampling",
@@ -421,6 +475,18 @@ export const cases: CaseStudy[] = [
       { handle: "@paulinareitman", gmv: 1205, note: "Consistent luxury lifestyle conversion" },
       { handle: "@sabinagilman1998", gmv: 837, note: "Fashion try-on showcase" },
     ],
+    cardData: {
+      thumbnail: "/media/cases/thumb-premium-apparel.jpg",
+      pillTag: "Premium Apparel",
+      cardTitle: "US Premium Apparel",
+      primaryValue: "$129K",
+      primaryLabel: "Total GMV",
+      stats: [
+        { value: "3.3M", label: "Video Views" },
+        { value: "1,100", label: "Orders" },
+        { value: "57.60%", label: "Post Rate" },
+      ],
+    },
   },
   {
     slug: "fine-jewellery-aesthetic-pipeline",
@@ -488,6 +554,18 @@ export const cases: CaseStudy[] = [
       { handle: "@betchbebuying", gmv: 588, note: "Curated shopping finds" },
       { handle: "@annaschae.finds", note: "Jewellery-native creator with strong niche authority" },
     ],
+    cardData: {
+      thumbnail: "/media/cases/thumb-jewellery.jpg",
+      pillTag: "Fine Jewellery",
+      cardTitle: "US Jewellery Brand",
+      primaryValue: "$14.7K",
+      primaryLabel: "Total GMV",
+      stats: [
+        { value: "464", label: "Samples Shipped" },
+        { value: "389", label: "Videos Posted" },
+        { value: "52.37%", label: "Post Rate" },
+      ],
+    },
   },
   {
     slug: "beauty-brand-ramp-up",
@@ -554,6 +632,18 @@ export const cases: CaseStudy[] = [
       { handle: "@corinaanetta", gmv: 157, note: "Cosmetics unboxing & application" },
       { handle: "@marora.tk11", gmv: 99, note: "Everyday essentials tester" },
     ],
+    cardData: {
+      thumbnail: "/media/cases/thumb-beauty.jpg",
+      pillTag: "Beauty",
+      cardTitle: "US Beauty Brand",
+      primaryValue: "$7.5K",
+      primaryLabel: "Total GMV",
+      stats: [
+        { value: "70.4K", label: "Creators Reached" },
+        { value: "221", label: "Videos Posted" },
+        { value: "282", label: "Orders" },
+      ],
+    },
   },
 ];
 
