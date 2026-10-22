@@ -43,4 +43,11 @@ describe("Case study data & assets integrity", () => {
       expect(study.metrics.length).toBeGreaterThanOrEqual(4);
     });
   });
+
+  it("keeps affiliate revenue share distinct from post rate", () => {
+    const sportsNutrition = cases.find((study) => study.slug === "sports-nutrition-affiliate-first");
+    const affiliateShare = sportsNutrition?.metrics.find((metric) => metric.label === "Affiliate Revenue Share");
+
+    expect(affiliateShare?.metricType).toBe("affiliate_revenue_share");
+  });
 });

@@ -42,4 +42,16 @@ describe("Contact form validation schema", () => {
     const result = contactFormSchema.safeParse(shortMsg);
     expect(result.success).toBe(false);
   });
+
+  it("rejects oversized message payloads", () => {
+    const result = contactFormSchema.safeParse({
+      fullName: "Sarah Founder",
+      email: "sarah@brand.com",
+      brandWebsite: "brand.com",
+      serviceInterest: "Shop Audit",
+      message: "a".repeat(5001),
+    });
+
+    expect(result.success).toBe(false);
+  });
 });

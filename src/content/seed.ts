@@ -224,7 +224,7 @@ export const cases: CaseStudy[] = [
     summary:
       "Managed the creator engine during the highest-intent shopping window of the year. Layered high-volume outreach with a LIVE-heavy creator strategy to drive consistent daily sales.",
     challenge:
-      "During the Q4 holiday peak, organic reach alone is insufficient without predictable creator output. The brand needed high video cadence and continuous LIVE streaming representation from trusted creators.",
+      "During the Q4 holiday peak, organic reach alone is insufficient without consistent creator output. The brand needed high video cadence and continuous LIVE streaming representation from trusted creators.",
     approach:
       "Recruited and mobilized a dedicated roster of daily-posting creators and live hosts. Synced product drops with TikTok Shop Seller Center promotions, ensuring 35 daily creators active and 31 daily creators closing sales.",
     responsibilities: [

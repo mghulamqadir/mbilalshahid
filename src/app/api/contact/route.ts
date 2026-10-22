@@ -7,13 +7,14 @@ const MAX_SUBMISSIONS_PER_WINDOW = 5;
 const submissionAttempts = new Map<string, { count: number; resetAt: number }>();
 
 function escapeHtml(value: string) {
-  return value.replace(/[&<>'"]/g, (character) => ({
+  const entities: Record<string, string> = {
     "&": "&amp;",
     "<": "&lt;",
     ">": "&gt;",
     "'": "&#39;",
     '"': "&quot;",
-  })[character] ?? character);
+  };
+  return value.replace(/[&<>'"]/g, (character) => entities[character] ?? character);
 }
 
 function getClientKey(request: Request) {

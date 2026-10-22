@@ -88,7 +88,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 2. VERIFIED HERO PROOF BANNER */}
+      {/* 2. SOURCE-BACKED HERO PROOF BANNER */}
       <section className="border-y border-[#DDD3D7] bg-[#FFFCF8] py-12 md:py-16">
         <div className="container-editorial">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">

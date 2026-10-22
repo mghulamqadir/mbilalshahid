@@ -16,7 +16,7 @@ export function SiteFooter() {
               </span>
               <p className="mt-2 text-sm text-[#DCC9DA] max-w-sm leading-relaxed">
                 TikTok Shop & creator commerce operator for US & UK DTC brands.
-                Turning creator attention into predictable, profitable revenue systems.
+                Turning creator attention into disciplined, accountable commerce systems.
               </p>
             </div>
 

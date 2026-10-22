@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "Portfolio of Bilal Shahid: 4+ years scaling US & UK DTC brands through TikTok Shop operations, creator sourcing, sample seeding, and affiliate commerce ecosystems.",
   openGraph: {
     title: `${site.name} — ${site.title}`,
-    description: "TikTok Shop creator engine & multichannel e-commerce portfolio with verified case studies.",
+    description: "TikTok Shop creator engine & multichannel e-commerce portfolio with source-backed case studies.",
     type: "website",
     locale: "en_US",
     siteName: site.name,

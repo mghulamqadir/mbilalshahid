@@ -108,11 +108,12 @@ export default function ContactPage() {
 
                   {/* Name */}
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-[#241B24] mb-2">
+                    <label htmlFor="fullName" className="block text-xs font-semibold uppercase tracking-wider text-[#241B24] mb-2">
                       Your Full Name *
                     </label>
                     <input
                       type="text"
+                      id="fullName"
                       required
                       placeholder="Jane Doe"
                       value={formData.fullName}
@@ -123,11 +124,12 @@ export default function ContactPage() {
 
                   {/* Email */}
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-[#241B24] mb-2">
+                    <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-[#241B24] mb-2">
                       Work Email Address *
                     </label>
                     <input
                       type="email"
+                      id="email"
                       required
                       placeholder="jane@yourbrand.com"
                       value={formData.email}
@@ -138,11 +140,12 @@ export default function ContactPage() {
 
                   {/* Brand / Website */}
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-[#241B24] mb-2">
+                    <label htmlFor="brandWebsite" className="block text-xs font-semibold uppercase tracking-wider text-[#241B24] mb-2">
                       Brand Name or Store URL *
                     </label>
                     <input
                       type="text"
+                      id="brandWebsite"
                       required
                       placeholder="yourbrand.com or TikTok Shop handle"
                       value={formData.brandWebsite}
@@ -154,10 +157,11 @@ export default function ContactPage() {
                   {/* Service Interest */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-[#241B24] mb-2">
+                      <label htmlFor="serviceInterest" className="block text-xs font-semibold uppercase tracking-wider text-[#241B24] mb-2">
                         Area of Interest
                       </label>
                       <select
+                        id="serviceInterest"
                         value={formData.serviceInterest}
                         onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg border border-[#DDD3D7] bg-[#FAF8F4] text-sm text-[#241B24] focus:outline-none focus:border-[#51284B]"
@@ -172,10 +176,11 @@ export default function ContactPage() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-[#241B24] mb-2">
+                      <label htmlFor="monthlyRevenue" className="block text-xs font-semibold uppercase tracking-wider text-[#241B24] mb-2">
                         Monthly Store Revenue
                       </label>
                       <select
+                        id="monthlyRevenue"
                         value={formData.monthlyRevenue}
                         onChange={(e) => setFormData({ ...formData, monthlyRevenue: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg border border-[#DDD3D7] bg-[#FAF8F4] text-sm text-[#241B24] focus:outline-none focus:border-[#51284B]"
@@ -191,10 +196,11 @@ export default function ContactPage() {
 
                   {/* Message */}
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-[#241B24] mb-2">
+                    <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-wider text-[#241B24] mb-2">
                       Goals & Current Bottlenecks *
                     </label>
                     <textarea
+                      id="message"
                       required
                       rows={4}
                       placeholder="What is your biggest current priority on TikTok Shop? (E.g., recruiting creators, sample fulfillment, scaling ad ROI, getting affiliate videos posted daily...)"
