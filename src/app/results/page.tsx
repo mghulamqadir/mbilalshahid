@@ -15,13 +15,15 @@ const categories = [
   { id: "beauty", label: "Beauty (1)" },
 ];
 
+const emptySubscribe = () => () => {};
+
 export default function ResultsPage() {
   const [activeCategory, setActiveCategory] = useState("all");
-  const [mounted, setMounted] = useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = React.useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
   const filteredCases =
     activeCategory === "all" ? cases : cases.filter((c) => c.category === activeCategory);

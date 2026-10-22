@@ -240,7 +240,7 @@ export default async function CaseStudyPage({
                 <span className="text-[10px] uppercase font-semibold text-[#DCC9DA] block mb-2">
                   Next Case Study
                 </span>
-                <h4 className="font-editorial text-lg mb-2">{nextCase.sector}</h4>
+                <h4 className="font-editorial text-lg text-[#FAF8F4] mb-2">{nextCase.sector}</h4>
                 <p className="text-xs text-[#DCC9DA] mb-4 line-clamp-2">
                   {nextCase.title}
                 </p>

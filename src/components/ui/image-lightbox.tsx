@@ -1,7 +1,9 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useSyncExternalStore } from "react";
 import Image from "next/image";
+
+const emptySubscribe = () => () => {};
 
 interface ImageLightboxProps {
   src: string;
@@ -13,13 +15,13 @@ interface ImageLightboxProps {
 
 export function ImageLightbox({ src, alt, title, description }: ImageLightboxProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
   const triggerRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {

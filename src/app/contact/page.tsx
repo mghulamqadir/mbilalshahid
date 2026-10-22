@@ -284,7 +284,7 @@ export default function ContactPage() {
                 <span className="text-[10px] uppercase font-semibold text-[#DCC9DA] block mb-2">
                   What Happens Next?
                 </span>
-                <h4 className="font-editorial text-lg mb-3">Clear & Prompt Response</h4>
+                <h4 className="font-editorial text-lg text-[#FAF8F4] mb-3">Clear & Prompt Response</h4>
                 <ol className="space-y-2 text-xs text-[#DCC9DA] list-decimal list-inside">
                   <li>Review of your shop URL, category, and creator presence</li>
                   <li>Initial assessment of sample economics and fit</li>

@@ -74,7 +74,7 @@ export function SectionHeading({
       {eyebrow && (
         <div
           className={`inline-block text-xs font-semibold uppercase tracking-widest mb-3 ${
-            inverted ? "text-purple-200" : "text-[#51284B]"
+            inverted ? "text-[#DCC9DA]" : "text-[#51284B]"
           }`}
         >
           {eyebrow}
@@ -88,7 +88,7 @@ export function SectionHeading({
         {title}
       </Component>
       {subtitle && (
-        <p className={`text-base md:text-lg leading-relaxed ${inverted ? "text-gray-300" : "text-[#746970]"}`}>
+        <p className={`text-base md:text-lg leading-relaxed ${inverted ? "text-[#DCC9DA]" : "text-[#746970]"}`}>
           {subtitle}
         </p>
       )}
