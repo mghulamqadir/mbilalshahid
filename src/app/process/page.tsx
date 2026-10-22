@@ -1,5 +1,5 @@
 import React from "react";
-import { operatingSystemSteps } from "@/content/seed";
+import { operatingSystemSteps, sampleCreatorPitches } from "@/content/seed";
 import { CheckIcon, SectionHeading } from "@/components/ui/primitives";
 import { ClosingCta } from "@/components/ui/closing-cta";
 
@@ -65,6 +65,52 @@ export default function ProcessPage() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Sample Creator Pitch Showcase (from portfolio page 8) */}
+          <div className="mt-20 pt-16 border-t border-[#DDD3D7]">
+            <div className="mb-10">
+              <span className="badge-editorial mb-3">Creator Evaluation Benchmark</span>
+              <h2 className="font-editorial text-3xl text-[#241B24] mb-2">
+                Sample Creator Pitch & Shortlist
+              </h2>
+              <p className="text-sm text-[#746970] max-w-2xl leading-relaxed">
+                Illustrative shortlist matching brand creator profiles (from portfolio page 8).
+                Demonstrates how creator vetting prioritizes revenue-closing ability and niche authority over vanity follower counts.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {sampleCreatorPitches.map((item, pIdx) => (
+                <div
+                  key={pIdx}
+                  className="bg-[#FFFCF8] border border-[#DDD3D7] rounded-xl p-6 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="font-mono text-sm font-bold text-[#35172F]">
+                        {item.creator}
+                      </span>
+                      <span className="text-[10px] bg-[#DCC9DA]/50 text-[#35172F] font-semibold px-2 py-0.5 rounded">
+                        {item.performance}
+                      </span>
+                    </div>
+                    <span className="text-xs font-semibold text-[#51284B] block mb-2">
+                      {item.category}
+                    </span>
+                    <p className="text-xs text-[#746970] leading-relaxed font-light">
+                      {item.rationale}
+                    </p>
+                  </div>
+                  <div className="mt-4 pt-3 border-t border-[#DDD3D7]/60 text-[10px] text-[#746970]">
+                    Portfolio Page 8 Vetting Sample
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="text-[11px] text-[#746970] italic mt-4">
+              * Note: Illustrative creator profiles representative of campaign briefs managed; provided as evaluation benchmarks.
+            </p>
           </div>
         </div>
       </section>

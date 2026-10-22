@@ -118,7 +118,7 @@ export default async function HomePage() {
       <section className="py-12 bg-[#FAF8F4]">
         <div className="container-editorial text-center">
           <span className="text-[11px] font-semibold uppercase tracking-widest text-[#746970] mb-6 block">
-            PLATFORMS & SYSTEMS OPERATED
+            PLATFORMS & TOOLS USED
           </span>
           <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 max-w-4xl mx-auto">
             {platformTools.map((tool, idx) => (

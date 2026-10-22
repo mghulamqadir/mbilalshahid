@@ -11,7 +11,7 @@ test.describe("Public Portfolio Navigation & Content", () => {
 
     // Verify verified proof metrics
     await expect(page.locator("text=4+").first()).toBeVisible();
-    await expect(page.locator("text=$616K").first()).toBeVisible();
+    await expect(page.locator("text=$616,780").first()).toBeVisible();
     await expect(page.locator("text=475").first()).toBeVisible();
 
     // Verify portrait image is present in hero

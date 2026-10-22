@@ -139,10 +139,10 @@ export const heroProof = [
     number: "5",
     unit: "Shops",
     label: "Managed in Parallel",
-    subtext: "Creator engine run simultaneously at peak",
+    subtext: "Up to 5 shops managed in parallel (historical peak)",
   },
   {
-    number: "$616K",
+    number: "$616,780",
     unit: "GMV",
     label: "Creator-Attributed GMV",
     subtext: "Contemporary Apparel — Q4 peak shopping",
@@ -152,6 +152,30 @@ export const heroProof = [
     unit: "Affiliates",
     label: "Active Affiliates Activated",
     subtext: "95.47% affiliate-driven sports nutrition share",
+  },
+];
+
+export const sampleCreatorPitches = [
+  {
+    creator: "@dezbreel",
+    category: "Jewellery & Accessories UGC",
+    performance: "$4,904 solo GMV",
+    rationale:
+      "Proven closer. Drove $4,904 in solo GMV on a fine jewellery brand managed with a strong repeat posting cadence. Aesthetic reads premium; fits jewellery and light apparel briefs.",
+  },
+  {
+    creator: "@italiajjacqueline",
+    category: "Apparel & Lifestyle UGC",
+    performance: "$2,363 solo GMV",
+    rationale:
+      "Converting UGC and a high-AOV audience. Delivered $2,363 GMV solo on a premium apparel brand. Strong choice for fashion-forward drops.",
+  },
+  {
+    creator: "@annaschae.finds",
+    category: "Jewellery-Native Creator",
+    performance: "Category Authority",
+    rationale:
+      "Active affiliate posting behaviour. Good fit for jewellery-first launches where category authority matters more than raw reach.",
   },
 ];
 
