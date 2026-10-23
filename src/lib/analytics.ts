@@ -11,7 +11,14 @@ type AllowedEvent =
   | "service_inquiry_click"
   | "audit_form_submit_start"
   | "audit_form_submit_success"
-  | "audit_form_submit_error";
+  | "audit_form_submit_error"
+  | "hero_audit_click"
+  | "hero_results_click"
+  | "case_study_click"
+  | "service_preview_click"
+  | "about_preview_click"
+  | "process_preview_click"
+  | "final_audit_click";
 
 type NonPiiProperties = {
   cta_label?: string;

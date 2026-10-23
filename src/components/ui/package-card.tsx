@@ -11,7 +11,8 @@ interface PackageCardProps {
 export function PackageCard({ pkg, featured = false }: PackageCardProps) {
   return (
     <div
-      className={`rounded-2xl border flex flex-col justify-between overflow-hidden transition-all ${
+      id={pkg.id}
+      className={`rounded-2xl border flex flex-col justify-between overflow-hidden transition-all scroll-mt-24 ${
         featured
           ? "bg-[#2D1627] border-[#51284B] text-[#FAF8F4] shadow-xl"
           : "bg-[#FFFCF8] border-[#DDD3D7] text-[#241B24] hover:border-[#51284B] shadow-sm"

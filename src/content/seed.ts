@@ -1,4 +1,5 @@
 export * from "./navigation";
+export * from "./homepage";
 import { siteRoutes, primaryNavigation, secondaryNavigation, primaryCTA } from "./navigation";
 
 export type MetricUnit = "usd" | "count" | "percent";

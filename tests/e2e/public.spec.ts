@@ -10,9 +10,9 @@ test.describe("Public Portfolio Navigation & Content", () => {
     await expect(heading).toContainText(/Scale on TikTok Shop|Turning Attention/i);
 
     // Verify verified proof metrics
-    await expect(page.locator("text=4+").first()).toBeVisible();
-    await expect(page.locator("text=$616K").first()).toBeVisible();
-    await expect(page.locator("text=200+").first()).toBeVisible();
+    await expect(page.locator("text=$616.8K").first()).toBeVisible();
+    await expect(page.locator("text=95.47%").first()).toBeVisible();
+    await expect(page.locator("text=3.3M").first()).toBeVisible();
 
     // Verify portrait image is present in hero
     const portrait = page.locator('img[alt*="Bilal Shahid"]').first();

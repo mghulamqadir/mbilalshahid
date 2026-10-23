@@ -66,8 +66,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable} ${caveat.variable}`}>
       <body className="min-h-screen flex flex-col bg-[#FAF8F4] text-[#241B24]">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#35172F] focus:text-[#FAF8F4] focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#FAF8F4]"
+        >
+          Skip to main content
+        </a>
         <SiteHeader />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1">{children}</main>
         <SiteFooter />
       </body>
     </html>
