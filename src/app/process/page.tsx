@@ -8,16 +8,17 @@ import { ReportingOverview } from "@/components/process/reporting-overview";
 import { ProcessFinalCTA } from "@/components/process/process-final-cta";
 
 export const metadata: Metadata = {
-  title: "TikTok Shop Growth Process & 90-Day Roadmap | Bilal Shahid",
+  title: "TikTok Shop Growth Process | Bilal Shahid",
   description:
-    "Explore Bilal Shahid's five-step TikTok Shop creator commerce methodology, 30/60/90-day roadmap, launch process, and reporting framework.",
+    "Discover Bilal Shahid's five-step creator commerce process, initial 90-day roadmap, sampling workflows, and performance reporting approach.",
   openGraph: {
-    title: "TikTok Shop Growth Process & 90-Day Roadmap | Bilal Shahid",
+    title: "TikTok Shop Growth Process | Bilal Shahid",
     description:
-      "A systematic creator engine: Discover & Qualify, Plan Sampling, Activate Affiliates, Align Shop & Promotions, and Measure & Optimize.",
+      "Discover Bilal Shahid's five-step creator commerce process, initial 90-day roadmap, sampling workflows, and performance reporting approach.",
+    url: "https://mbilalshahid.vercel.app/process",
   },
   alternates: {
-    canonical: "/process",
+    canonical: "https://mbilalshahid.vercel.app/process",
   },
 };
 

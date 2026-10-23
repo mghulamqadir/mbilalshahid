@@ -15,9 +15,9 @@ import {
 import { SectionHeading } from "@/components/ui/primitives";
 
 export const metadata: Metadata = {
-  title: "TikTok Shop Growth & Creator Affiliate Specialist | Bilal Shahid",
+  title: "TikTok Shop Growth Specialist for US & UK Brands | Bilal Shahid",
   description:
-    "Bilal Shahid helps US and UK consumer brands with TikTok Shop operations, creator affiliate programs, sampling, and performance-led commerce. Explore case studies and services.",
+    "Bilal Shahid helps US and UK consumer brands with TikTok Shop operations, creator affiliate programs, sampling, and performance-led commerce. Explore services and results.",
   keywords: [
     "TikTok Shop growth specialist",
     "TikTok Shop affiliate manager",
@@ -29,9 +29,9 @@ export const metadata: Metadata = {
     "TikTok Shop affiliate programme",
   ],
   openGraph: {
-    title: "TikTok Shop Growth & Creator Affiliate Specialist | Bilal Shahid",
+    title: "TikTok Shop Growth Specialist for US & UK Brands | Bilal Shahid",
     description:
-      "Bilal Shahid helps US and UK consumer brands with TikTok Shop operations, creator affiliate programs, sampling, and performance-led commerce. Explore case studies and services.",
+      "Bilal Shahid helps US and UK consumer brands with TikTok Shop operations, creator affiliate programs, sampling, and performance-led commerce. Explore services and results.",
     type: "website",
     locale: "en_US",
     url: "https://mbilalshahid.vercel.app/",

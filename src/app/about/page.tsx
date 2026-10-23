@@ -9,22 +9,47 @@ import { CredentialsPreview } from "@/components/about/credentials-preview";
 import { AboutFinalCTA } from "@/components/about/about-final-cta";
 
 export const metadata: Metadata = {
-  title: "About Bilal Shahid | TikTok Shop Growth Specialist",
+  title: "About Bilal Shahid | TikTok Shop Specialist",
   description:
-    "Bilal Shahid specializes in TikTok Shop operations, creator affiliate programs, and e-commerce growth support for US and UK brands. Explore his background and expertise.",
+    "Learn about Bilal Shahid's e-commerce background, TikTok Shop expertise, creator affiliate work, and professional approach to growth.",
   openGraph: {
-    title: "About Bilal Shahid | TikTok Shop Growth Specialist",
+    title: "About Bilal Shahid | TikTok Shop Specialist",
     description:
-      "E-commerce operator and creator affiliate specialist with 4+ years driving measurable commerce outcomes for US and UK consumer brands.",
+      "Learn about Bilal Shahid's e-commerce background, TikTok Shop expertise, creator affiliate work, and professional approach to growth.",
+    url: "https://mbilalshahid.vercel.app/about",
   },
   alternates: {
-    canonical: "/about",
+    canonical: "https://mbilalshahid.vercel.app/about",
+  },
+};
+
+const aboutJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": "https://mbilalshahid.vercel.app/about#profile",
+  url: "https://mbilalshahid.vercel.app/about",
+  name: "About Bilal Shahid",
+  mainEntity: {
+    "@type": "Person",
+    "@id": "https://mbilalshahid.vercel.app/#person",
+    name: "Bilal Shahid",
+    url: "https://mbilalshahid.vercel.app/",
+    jobTitle: "TikTok Shop Growth & Creator Affiliate Specialist",
+    sameAs: ["https://www.linkedin.com/in/mbilalshahid/"],
+    alumniOf: {
+      "@type": "EducationalOrganization",
+      name: "COMSATS University Islamabad",
+    },
   },
 };
 
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }}
+      />
       {/* 01 — About Hero */}
       <AboutHero />
 

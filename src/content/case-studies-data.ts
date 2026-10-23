@@ -674,7 +674,7 @@ export const canonicalDossiers: Record<string, CanonicalDossier> = {
     categoryLabel: "Beauty",
     sector: "Beauty Brand (US)",
     title: "Creator Outreach and Affiliate Activation for a Beauty Brand",
-    seoTitle: "Beauty TikTok Shop Creator Campaign | Bilal Shahid",
+    seoTitle: "Beauty Creator Affiliate Case Study | Bilal Shahid",
     seoDescription:
       "A structured top-of-funnel outreach and seeding ramp-up generating 221 videos, 70.4K creators reached, and $7.5K GMV for an emerging TikTok Shop beauty brand.",
     market: "United States (US Market)",

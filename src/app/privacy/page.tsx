@@ -4,11 +4,17 @@ import type { Metadata } from "next";
 import { professionalProfile } from "@/content/profile-data";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy & Data Handling | Bilal Shahid",
+  title: "Privacy Policy | Bilal Shahid",
   description:
     "Privacy policy and data handling practices for the Bilal Shahid TikTok Shop growth portfolio. Information on transactional processing and contact rights.",
+  openGraph: {
+    title: "Privacy Policy | Bilal Shahid",
+    description:
+      "Privacy policy and data handling practices for the Bilal Shahid TikTok Shop growth portfolio.",
+    url: "https://mbilalshahid.vercel.app/privacy",
+  },
   alternates: {
-    canonical: "/privacy",
+    canonical: "https://mbilalshahid.vercel.app/privacy",
   },
 };
 

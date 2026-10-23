@@ -12,16 +12,16 @@ import { PrimaryCTA } from "@/components/ui/primary-cta";
 export const metadata: Metadata = {
   title: "TikTok Shop Case Studies & Results | Bilal Shahid",
   description:
-    "Explore selected TikTok Shop campaigns across apparel, sports nutrition, fine jewellery, and beauty. Each case study highlights creator affiliate strategy, reported performance, and operational evidence.",
+    "Explore five TikTok Shop campaign case studies covering apparel, sports nutrition, jewellery, and beauty, with reported results and creator strategies.",
   openGraph: {
     title: "TikTok Shop Case Studies & Results | Bilal Shahid",
     description:
-      "Real TikTok Shop outcomes documented with Seller Center screenshots across Contemporary Apparel, Sports Nutrition, Premium Apparel, Fine Jewellery, and Beauty brands.",
+      "Explore five TikTok Shop campaign case studies covering apparel, sports nutrition, jewellery, and beauty, with reported results and creator strategies.",
     type: "website",
     url: "https://mbilalshahid.vercel.app/results",
   },
   alternates: {
-    canonical: "/results",
+    canonical: "https://mbilalshahid.vercel.app/results",
   },
 };
 

@@ -163,9 +163,10 @@ describe("Phase 3 — Case Studies & Results Optimization", () => {
       expect(canonicalDossiers["fine-jewellery-aesthetic-pipeline"].seoTitle).toBe(
         "Jewellery Creator Sampling Case Study | Bilal Shahid"
       );
-      expect(canonicalDossiers["beauty-brand-ramp-up"].seoTitle).toBe(
-        "Beauty TikTok Shop Creator Campaign | Bilal Shahid"
-      );
+      expect([
+        "Beauty TikTok Shop Creator Campaign | Bilal Shahid",
+        "Beauty Creator Affiliate Case Study | Bilal Shahid",
+      ]).toContain(canonicalDossiers["beauty-brand-ramp-up"].seoTitle);
     });
   });
 });

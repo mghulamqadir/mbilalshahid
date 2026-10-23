@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Request a TikTok Shop Growth Audit | Bilal Shahid",
+  title: "Contact Bilal Shahid | TikTok Shop Growth Audit",
   description:
-    "Get in touch to request a TikTok Shop growth audit. Share your brand details, product category, and current shop stage to start a conversation.",
+    "Contact Bilal Shahid to discuss TikTok Shop launch services, creator affiliate growth, shop management, and an initial growth audit.",
+  openGraph: {
+    title: "Contact Bilal Shahid | TikTok Shop Growth Audit",
+    description:
+      "Contact Bilal Shahid to discuss TikTok Shop launch services, creator affiliate growth, shop management, and an initial growth audit.",
+    type: "website",
+    url: "https://mbilalshahid.vercel.app/contact",
+  },
   alternates: {
-    canonical: "/contact",
+    canonical: "https://mbilalshahid.vercel.app/contact",
   },
 };
 

@@ -52,7 +52,7 @@ export async function generateMetadata({
       ],
     },
     alternates: {
-      canonical: `/results/${dossier.slug}`,
+      canonical: `https://mbilalshahid.vercel.app/results/${dossier.slug}`,
     },
   };
 }
@@ -72,8 +72,37 @@ export default async function CaseStudyDetailPage({
 
   const relatedDossiers = await getRelatedDossiers(slug);
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://mbilalshahid.vercel.app/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Case Studies",
+        item: "https://mbilalshahid.vercel.app/results",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: dossier.title,
+        item: `https://mbilalshahid.vercel.app/results/${dossier.slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="bg-[#FAF7F2] min-h-screen text-[#241B24]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* ── 01. BREADCRUMB + HERO ────────────────────────────────────── */}
       <CaseStudyHero dossier={dossier} />
 

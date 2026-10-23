@@ -11,14 +11,15 @@ import { ServicesFinalCTA } from "@/components/services/services-final-cta";
 export const metadata: Metadata = {
   title: "TikTok Shop Growth Services | Bilal Shahid",
   description:
-    "TikTok Shop launch support, creator affiliate growth, and full shop management for US and UK brands. Explore Bilal Shahid's services and engagement options.",
+    "Explore TikTok Shop launch support, creator affiliate growth, and ongoing management services for US and UK brands.",
   openGraph: {
     title: "TikTok Shop Growth Services | Bilal Shahid",
     description:
-      "Three structured TikTok Shop packages: Launch & Setup, Creator Affiliate Growth, and Full Growth Management for US & UK brands.",
+      "Explore TikTok Shop launch support, creator affiliate growth, and ongoing management services for US and UK brands.",
+    url: "https://mbilalshahid.vercel.app/services",
   },
   alternates: {
-    canonical: "/services",
+    canonical: "https://mbilalshahid.vercel.app/services",
   },
 };
 

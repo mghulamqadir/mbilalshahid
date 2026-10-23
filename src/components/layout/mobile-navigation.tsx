@@ -18,8 +18,16 @@ export function MobileNavigation({ isOpen, onClose }: MobileNavigationProps) {
   useEffect(() => {
     if (isOpen) {
       firstLinkRef.current?.focus();
+
+      function handleKeyDown(e: KeyboardEvent) {
+        if (e.key === "Escape") {
+          onClose();
+        }
+      }
+      window.addEventListener("keydown", handleKeyDown);
+      return () => window.removeEventListener("keydown", handleKeyDown);
     }
-  }, [isOpen]);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 

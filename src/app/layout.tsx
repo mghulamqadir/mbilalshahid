@@ -23,38 +23,55 @@ const caveat = Caveat({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://bilalshahid.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mbilalshahid.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${site.name} — ${site.title}`,
-    template: `%s | ${site.name}`,
+    default: "TikTok Shop Growth Specialist for US & UK Brands | Bilal Shahid",
+    template: "%s",
   },
   description:
-    "Bilal Shahid — TikTok Shop growth specialist helping US & UK brands scale through creator affiliate programmes, GMV Max campaigns, and Seller Center operations. 4+ years, documented results.",
+    "Bilal Shahid helps US and UK consumer brands with TikTok Shop operations, creator affiliate programs, sampling, and performance-led commerce. Explore services and results.",
   openGraph: {
-    title: `${site.name} — ${site.title}`,
+    title: "TikTok Shop Growth Specialist for US & UK Brands | Bilal Shahid",
     description:
-      "TikTok Shop growth specialist for US & UK brands. Documented case studies with Seller Center evidence — creator affiliate programmes, GMV Max campaigns, and shop operations.",
+      "Bilal Shahid helps US and UK consumer brands with TikTok Shop operations, creator affiliate programs, sampling, and performance-led commerce. Explore services and results.",
     type: "website",
     locale: "en_US",
     siteName: site.name,
+    url: siteUrl,
     images: [
       {
         url: "/media/cases/thumb-apparel-q4.png",
         width: 1200,
         height: 630,
-        alt: "Bilal Shahid — TikTok Shop Growth Portfolio",
+        alt: "Bilal Shahid — TikTok Shop Growth Specialist",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.title}`,
+    title: "TikTok Shop Growth Specialist for US & UK Brands | Bilal Shahid",
     description:
-      "TikTok Shop growth specialist for US & UK brands. Documented case studies with Seller Center evidence.",
+      "Bilal Shahid helps US and UK consumer brands with TikTok Shop operations, creator affiliate programs, sampling, and performance-led commerce.",
     images: ["/media/cases/thumb-apparel-q4.png"],
+  },
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  url: siteUrl,
+  name: "Bilal Shahid — TikTok Shop Growth Specialist",
+  description:
+    "Bilal Shahid helps US and UK consumer brands with TikTok Shop operations, creator affiliate programs, sampling, and performance-led commerce.",
+  publisher: {
+    "@type": "Person",
+    name: "Bilal Shahid",
+    jobTitle: "TikTok Shop Growth & Creator Affiliate Specialist",
+    url: siteUrl,
   },
 };
 
@@ -65,10 +82,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable} ${caveat.variable}`}>
-      <body className="min-h-screen flex flex-col bg-[#FAF8F4] text-[#241B24]">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+      </head>
+      <body className="min-h-screen flex flex-col bg-[#FFF9F3] text-[#411b36]">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#35172F] focus:text-[#FAF8F4] focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#FAF8F4]"
+          className="skip-link btn-plum text-xs z-[9999]"
         >
           Skip to main content
         </a>

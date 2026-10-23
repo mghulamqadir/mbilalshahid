@@ -11,16 +11,17 @@ import { ResumeAdditionalProjects } from "@/components/resume/resume-additional-
 import { ResumeFooter } from "@/components/resume/resume-footer";
 
 export const metadata: Metadata = {
-  title: "Bilal Shahid Résumé | E-commerce & TikTok Shop",
+  title: "Bilal Shahid Résumé | TikTok Shop & E-commerce",
   description:
-    "View Bilal Shahid's professional experience, e-commerce competencies, creator affiliate skills, and qualifications. Access his online résumé and downloadable CV.",
+    "View Bilal Shahid's professional experience, TikTok Shop skills, e-commerce operations background, education, and downloadable résumé.",
   openGraph: {
-    title: "Bilal Shahid Résumé | E-commerce & TikTok Shop",
+    title: "Bilal Shahid Résumé | TikTok Shop & E-commerce",
     description:
       "Curriculum Vitae of Bilal Shahid: TikTok Shop & Creator Affiliate Specialist. Career history, core competencies, education, and achievements.",
+    url: "https://mbilalshahid.vercel.app/resume",
   },
   alternates: {
-    canonical: "/resume",
+    canonical: "https://mbilalshahid.vercel.app/resume",
   },
 };
 
