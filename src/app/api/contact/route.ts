@@ -61,13 +61,18 @@ export async function POST(request: Request) {
     const {
       fullName,
       email,
+      businessEmail,
+      brandName,
       brandWebsite,
+      websiteUrl,
       targetMarket,
       productCategory,
       shopStage,
+      service,
       serviceInterest,
       monthlyGmv,
       monthlyRevenue,
+      goals,
       message,
       websiteHoneypot,
     } = result.data;
@@ -77,38 +82,42 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true, message: "Inquiry received" });
     }
 
-    const gmv = monthlyGmv || monthlyRevenue || "Not provided";
-    const market = targetMarket || "Not provided";
-    const category = productCategory || "Not provided";
-    const stage = shopStage || "Not provided";
+    const effectiveEmail = email || businessEmail || "";
+    const effectiveBrand = brandName || brandWebsite || "Brand not provided";
+    const effectiveUrl = websiteUrl || brandWebsite || "Not provided";
+    const effectiveGoals = goals || message || "";
+    const effectiveService = service || serviceInterest || "I'm Not Sure Yet";
+    const gmv = monthlyGmv || monthlyRevenue || "Not specified";
+    const market = targetMarket || "US & UK";
+    const category = productCategory || "Not specified";
+    const stage = shopStage || "Not specified";
 
     const safe = {
       fullName: escapeHtml(fullName),
-      email: escapeHtml(email),
-      brandWebsite: escapeHtml(brandWebsite),
+      email: escapeHtml(effectiveEmail),
+      brand: escapeHtml(effectiveBrand),
+      websiteUrl: escapeHtml(effectiveUrl),
       targetMarket: escapeHtml(market),
       productCategory: escapeHtml(category),
       shopStage: escapeHtml(stage),
-      serviceInterest: escapeHtml(serviceInterest),
+      serviceInterest: escapeHtml(effectiveService),
       monthlyGmv: escapeHtml(gmv),
-      message: escapeHtml(message).replace(/\n/g, "<br />"),
+      goals: escapeHtml(effectiveGoals).replace(/\n/g, "<br />"),
     };
 
-    const emailSubject = `TikTok Shop Growth Audit Request: ${brandWebsite} — ${fullName}`;
+    const emailSubject = `TikTok Shop Growth Audit Request: ${effectiveBrand} — ${fullName}`;
     const emailBody = `
 New TikTok Shop Growth Audit inquiry submitted via portfolio:
 
 Name: ${fullName}
-Work Email: ${email}
-Brand / Store: ${brandWebsite}
+Work Email: ${effectiveEmail}
+Brand / Store: ${effectiveBrand}
+Website / Shop URL: ${effectiveUrl}
 Target Market: ${market}
-Product Category: ${category}
-Current Shop Stage: ${stage}
-Service Required: ${serviceInterest}
-Current Monthly GMV: ${gmv}
+Service Required: ${effectiveService}
 
 Goals & Challenges:
-${message}
+${effectiveGoals}
 
 Submitted at: ${new Date().toISOString()}
 `.trim();
@@ -118,16 +127,14 @@ Submitted at: ${new Date().toISOString()}
   <h2 style="color: #35172F; margin-top: 0;">New TikTok Shop Growth Audit Request</h2>
   <p><strong>Name:</strong> ${safe.fullName}</p>
   <p><strong>Work Email:</strong> ${safe.email}</p>
-  <p><strong>Brand / Store:</strong> ${safe.brandWebsite}</p>
+  <p><strong>Brand / Store:</strong> ${safe.brand}</p>
+  <p><strong>Website / Shop URL:</strong> ${safe.websiteUrl}</p>
   <p><strong>Target Market:</strong> ${safe.targetMarket}</p>
-  <p><strong>Product Category:</strong> ${safe.productCategory}</p>
-  <p><strong>Current Shop Stage:</strong> ${safe.shopStage}</p>
   <p><strong>Service Required:</strong> ${safe.serviceInterest}</p>
-  <p><strong>Current Monthly GMV:</strong> ${safe.monthlyGmv}</p>
   <hr style="border: none; border-top: 1px solid #DDD3D7; margin: 20px 0;" />
   <p><strong>Goals & Challenges:</strong></p>
   <blockquote style="background: #FAF8F4; border-left: 4px solid #35172F; margin: 0; padding: 12px 16px;">
-    ${safe.message}
+    ${safe.goals}
   </blockquote>
   <p style="font-size: 12px; color: #746970; margin-top: 24px;">Received via Bilal Shahid Growth Portfolio system.</p>
 </div>

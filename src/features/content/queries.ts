@@ -17,6 +17,110 @@ import {
   RoadmapPhase,
 } from "@/content/seed";
 import { canonicalDossiers, CanonicalDossier } from "@/content/case-studies-data";
+import {
+  servicePackages,
+  packageScopeMatrix,
+  operationalCapabilities,
+  engagementTerms,
+  ServicePackage,
+  ScopeMatrixRow,
+  OperationalCapability,
+  EngagementTermItem,
+} from "@/content/services-data";
+import {
+  processFrameworkSteps,
+  retainerRoadmap,
+  launchProjectTimeline,
+  reportingAreas,
+  ProcessStepItem,
+  RoadmapMilestone,
+  LaunchTimelineStage,
+  ReportingArea,
+} from "@/content/process-data";
+import {
+  professionalProfile,
+  aboutPageContent,
+  verifiedExperience,
+  selectedAchievements,
+  coreCompetencies,
+  verifiedEducation,
+  additionalProjects,
+  contactFAQs,
+  ExperienceRole,
+  AchievementItem,
+  CompetencyGroup,
+  EducationRecord,
+  AdditionalProject,
+} from "@/content/profile-data";
+
+/* ── Canonical Profile & Résumé Queries (Phase 5) ─────────────── */
+export async function getProfessionalProfile() {
+  return professionalProfile;
+}
+
+export async function getAboutContent() {
+  return aboutPageContent;
+}
+
+export async function getVerifiedExperience(): Promise<ExperienceRole[]> {
+  return verifiedExperience.filter((e) => e.approved);
+}
+
+export async function getSelectedAchievements(): Promise<AchievementItem[]> {
+  return selectedAchievements;
+}
+
+export async function getCoreCompetencies(): Promise<CompetencyGroup[]> {
+  return coreCompetencies;
+}
+
+export async function getVerifiedEducation(): Promise<EducationRecord[]> {
+  return verifiedEducation;
+}
+
+export async function getAdditionalProjects(): Promise<AdditionalProject[]> {
+  return additionalProjects;
+}
+
+export async function getContactFAQs() {
+  return contactFAQs;
+}
+
+/* ── Canonical Services & Packages Queries (Phase 4) ──────────── */
+export async function getCanonicalServices(): Promise<ServicePackage[]> {
+  return servicePackages;
+}
+
+export async function getPackageScopeMatrix(): Promise<ScopeMatrixRow[]> {
+  return packageScopeMatrix;
+}
+
+export async function getOperationalCapabilities(): Promise<OperationalCapability[]> {
+  return operationalCapabilities;
+}
+
+export async function getEngagementTerms(): Promise<EngagementTermItem[]> {
+  return engagementTerms;
+}
+
+/* ── Canonical Process Queries (Phase 4) ──────────────────────── */
+export async function getCanonicalProcessSteps(): Promise<ProcessStepItem[]> {
+  return processFrameworkSteps;
+}
+
+export async function getRetainerRoadmap(): Promise<RoadmapMilestone[]> {
+  return retainerRoadmap;
+}
+
+export async function getLaunchTimeline(): Promise<LaunchTimelineStage[]> {
+  return launchProjectTimeline;
+}
+
+export async function getReportingAreas(): Promise<ReportingArea[]> {
+  return reportingAreas;
+}
+
+/* ── Case Studies & Dossiers Queries (Phase 3) ─────────────────── */
 
 export async function getCanonicalDossier(slug: string): Promise<CanonicalDossier | undefined> {
   return canonicalDossiers[slug];

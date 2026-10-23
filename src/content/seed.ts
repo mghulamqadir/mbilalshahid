@@ -215,7 +215,7 @@ export const operatingSystemSteps = [
     shortTitle: "Creator Strategy",
     shortDesc: "Find the right creators and winning angles.",
     icon: "users",
-    title: "Creator Discovery & Scoring",
+    title: "Discover & Qualify",
     description:
       "Aesthetic and category-fit pipeline across TikTok Shop, Instagram, and LTK. Rigorous qualification using GMV, post-rate, and audience resonance rubrics.",
     deliverables: ["Creator ICP mapping", "Scoring matrix (A/B/C tiers)", "Outreach prospect list"],
@@ -225,7 +225,7 @@ export const operatingSystemSteps = [
     shortTitle: "Content & Testing",
     shortDesc: "Produce, test and iterate high-converting content.",
     icon: "play",
-    title: "Samples & PR Logistics",
+    title: "Plan Sampling",
     description:
       "Disciplined sample approvals preventing wasted seeding budget. End-to-end fulfillment tracking and post-send follow-through until video goes live.",
     deliverables: ["Sample budget allocation", "Fulfillment & dispatch tracking", "Unboxing expectations brief"],
@@ -235,7 +235,7 @@ export const operatingSystemSteps = [
     shortTitle: "TikTok Shop Growth",
     shortDesc: "Optimize listings, offers and creator distribution.",
     icon: "shopping-bag",
-    title: "Outreach & Activation",
+    title: "Activate Affiliates",
     description:
       "Brand-voice personalized outreach at scale. Active collaboration chat, custom commission structures, and dormant affiliate re-engagement.",
     deliverables: ["Personalized DM sequences", "Tiered commission incentive design", "Cooperation chat management"],
@@ -245,7 +245,7 @@ export const operatingSystemSteps = [
     shortTitle: "Paid Amplification",
     shortDesc: "Scale what works with TT Ads and retargeting.",
     icon: "chart",
-    title: "Shop, Content & Promotion",
+    title: "Align Shop & Promotions",
     description:
       "Coordinating creator video cadence with Seller Center campaign centers, flash sales, product vouchers, and GMV Max advertising amplification.",
     deliverables: ["Content publishing calendar", "Promotional flash sale alignment", "LIVE stream schedule support"],
@@ -255,7 +255,7 @@ export const operatingSystemSteps = [
     shortTitle: "Repeat & Scale",
     shortDesc: "Build systems for long-term growth.",
     icon: "gear",
-    title: "Weekly Reporting & Scaling",
+    title: "Measure & Optimize",
     description:
       "Funnel diagnostics separating top-of-funnel reach from actual affiliate-attributed GMV. Double down on winning creators and prune low-converting seeds.",
     deliverables: ["Weekly funnel health dashboard", "Top affiliate contribution report", "Next-cycle optimization roadmap"],
@@ -685,7 +685,7 @@ export const services = [
     title: "Shop Operations & Paid Ads (GMV Max)",
     problem: "Aligning creator content with TikTok Shop Seller Center campaign centers, vouchers, and ad budget for exponential scale.",
     deliverables: [
-      "GMV Max automated and manual campaign configuration with 5x–15x ROI targets",
+      "GMV Max automated and manual campaign configuration with data-informed ROI targets",
       "Flash sales, product vouchers, free shipping campaigns, and bundle offers",
       "Product listing SEO, conversion rate optimization (CRO), and offer optimization",
     ],
@@ -720,7 +720,7 @@ export const careerTimeline: CareerRole[] = [
     market: "UK & US Brands (Health & Wellness, Supplements, Beauty, Apparel, Personal Care)",
     highlights: [
       "Managed full-funnel TikTok Shop operations driving 20–30% sustained MoM GMV growth (30%+ during peak cycles)",
-      "Executed GMV Max (auto & manual) campaigns achieving 5x–15x ROAS targets",
+      "Executed GMV Max (auto & manual) campaigns achieving data-informed ROAS targets",
       "Scaled an apparel clothing brand from £5k to £20k+ GMV within 2 months",
       "Led affiliate & creator programs managing free creators, retainers, and targeted collaborations",
       "Oversaw order management, CRM flows, and review handling at 1,500–2,000 peak orders",
@@ -895,7 +895,7 @@ export const packages: Package[] = [
     deliverables: [
       "Everything in Creator Affiliate Growth, plus:",
       "Full TikTok Shop Seller Center operations and campaign management",
-      "GMV Max automated and manual ad campaigns with 5x–15x ROI targets",
+      "GMV Max automated and manual ad campaigns with data-informed ROI targets",
       "Flash sales, product vouchers, free shipping campaigns, and bundle offers",
       "Product listing SEO and conversion rate optimisation",
       "LIVE stream scheduling and coordination",
@@ -953,7 +953,7 @@ export const roadmapPhases: RoadmapPhase[] = [
       "TikTok Shop Seller Center audit — listings, health score, promotions config",
       "Product positioning and hook angle development",
       "Creator ICP definition — category, aesthetic, GMV history, post rate",
-      "Creator prospect pipeline: first 200–500 qualified outreach targets",
+      "Creator prospect pipeline: agreed qualified outreach targets",
       "Commission structure design and affiliate programme setup",
       "Operational readiness check — inventory, fulfilment, response SLAs",
     ],

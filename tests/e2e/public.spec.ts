@@ -71,7 +71,7 @@ test.describe("Public Portfolio Navigation & Content", () => {
 
   test("Contact page renders form and FAQ", async ({ page }) => {
     await page.goto("/contact");
-    await expect(page.locator("h1")).toContainText(/Request a Free Growth Audit|Start a Conversation/i);
+    await expect(page.locator("h1")).toContainText(/Request a Free Growth Audit|Start a Conversation|Let's Discuss Your TikTok Shop Growth/i);
     await expect(page.locator('input[placeholder="Jane Doe"]')).toBeVisible();
     await expect(page.locator("text=Common Questions")).toBeVisible();
   });
