@@ -1,3 +1,6 @@
+export * from "./navigation";
+import { siteRoutes, primaryNavigation, secondaryNavigation, primaryCTA } from "./navigation";
+
 export type MetricUnit = "usd" | "count" | "percent";
 export type MetricType =
   | "creator_attributed_gmv"
@@ -117,8 +120,8 @@ const metric = (
 
 export const site = {
   name: "Bilal Shahid",
-  title: "TikTok Shop & Creator / Affiliate Growth Specialist",
-  tagline: "Turning Attention Into Measurable Commerce Growth",
+  title: "TikTok Shop Growth & Creator Affiliate Specialist",
+  tagline: "Turning Creator Attention Into Accountable Commerce Systems",
   email: "bilalshahid1609@gmail.com",
   // Publish direct phone/WhatsApp contact only after the owner has explicitly approved it.
   phone: undefined,
@@ -129,14 +132,10 @@ export const site = {
   disclaimer: "Independent specialist. Not affiliated with, endorsed by, or sponsored by TikTok.",
   linkedin: "https://www.linkedin.com/in/bilalshahid-tiktokshop/", // placeholder — owner to update
   twitter: undefined,
-  nav: [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "What I Do", href: "/services" },
-    { label: "Case Studies", href: "/results" },
-    { label: "Insights", href: "/process" },
-    { label: "Contact", href: "/contact" },
-  ],
+  routes: siteRoutes,
+  primaryCTA,
+  nav: primaryNavigation,
+  secondaryNav: secondaryNavigation,
 };
 
 export const heroProof = [
@@ -144,13 +143,13 @@ export const heroProof = [
     number: "4+",
     unit: "Years",
     label: "Years Experience",
-    subtext: "UK & US brand-side & agency operations",
+    subtext: "UK & US brand-side & agency operations (4+ years overall e-commerce, 2+ years TikTok Shop)",
   },
   {
     number: "5",
     unit: "Shops",
     label: "Active Shops Managed in Parallel",
-    subtext: "Up to 5 shops managed in parallel",
+    subtext: "Up to 5 shops managed concurrently in parallel",
   },
   {
     number: "$616K",
@@ -162,7 +161,7 @@ export const heroProof = [
     number: "30%+",
     unit: "MoM",
     label: "Average MoM Growth",
-    subtext: "Technisia full-funnel TikTok Shop operations",
+    subtext: "Technisia full-funnel TikTok Shop operations during peak scaling cycles",
   },
   {
     number: "200+",
@@ -237,7 +236,7 @@ export const operatingSystemSteps = [
     icon: "shopping-bag",
     title: "Outreach & Activation",
     description:
-      "In-voice personalized messaging at scale. Active collaboration chat, custom commission structures, and dormant affiliate re-engagement.",
+      "Brand-voice personalized outreach at scale. Active collaboration chat, custom commission structures, and dormant affiliate re-engagement.",
     deliverables: ["Personalized DM sequences", "Tiered commission incentive design", "Cooperation chat management"],
   },
   {
@@ -665,7 +664,7 @@ export const services = [
     title: "Outreach, Sampling & PR Gifting",
     problem: "Moving from initial creator interest to accountable, tracked product seeding that actually results in live videos.",
     deliverables: [
-      "In-voice personalized messaging sequences tailored for founder-led brands",
+      "Brand-voice personalized outreach sequences tailored for founder-led brands",
       "Sample inventory budgeting and approval gates to protect margin",
       "Post-shipment logistics follow-through and video fulfillment tracking",
     ],
@@ -719,8 +718,8 @@ export const careerTimeline: CareerRole[] = [
     period: "Mar 2025 – Sep 2026",
     market: "UK & US Brands (Health & Wellness, Supplements, Beauty, Apparel, Personal Care)",
     highlights: [
-      "Managed full-funnel TikTok Shop operations driving 20–30% MoM GMV growth",
-      "Executed GMV Max (auto & manual) campaigns achieving 5x–15x ROI",
+      "Managed full-funnel TikTok Shop operations driving 20–30% sustained MoM GMV growth (30%+ during peak cycles)",
+      "Executed GMV Max (auto & manual) campaigns achieving 5x–15x ROAS targets",
       "Scaled an apparel clothing brand from £5k to £20k+ GMV within 2 months",
       "Led affiliate & creator programs managing free creators, retainers, and targeted collaborations",
       "Oversaw order management, CRM flows, and review handling at 1,500–2,000 peak orders",

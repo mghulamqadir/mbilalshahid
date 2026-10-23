@@ -330,8 +330,8 @@ export default function ContactPage() {
                       : "Request TikTok Shop Growth Audit \u2197"}
                   </button>
 
-                  <p className="text-[11px] text-center text-[#746970]">
-                    Your information is kept strictly confidential and never shared with third parties.
+                  <p className="text-[11px] text-center text-[#746970] leading-relaxed">
+                    Your information is kept strictly confidential and processed securely via our transactional email provider (Brevo) solely to respond to your inquiry. We never sell, rent, or disclose your details for third-party marketing.
                   </p>
                 </form>
               )}

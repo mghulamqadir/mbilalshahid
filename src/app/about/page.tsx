@@ -42,7 +42,7 @@ export default function AboutPage() {
 
               <div className="flex flex-wrap items-center gap-4">
                 <ButtonLink href="/resume" variant="primary">
-                  <span>View Resume</span>
+                  <span>View Résumé</span>
                   <ArrowRight className="w-4 h-4" />
                 </ButtonLink>
                 <ButtonLink href="/contact" variant="outline">

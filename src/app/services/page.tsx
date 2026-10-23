@@ -124,6 +124,32 @@ export default async function ServicesPage() {
         </div>
       </section>
 
+      {/* ── Process Entry Point (How I Work) ───────────────────────── */}
+      <section className="py-12 bg-[#FFFCF8] border-y border-[#DDD3D7]">
+        <div className="container-editorial">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-8 rounded-2xl bg-[#FAF8F4] border border-[#DDD3D7]">
+            <div className="max-w-2xl">
+              <span className="text-[10px] font-semibold uppercase tracking-wider text-[#51284B] block mb-2">
+                Execution Methodology
+              </span>
+              <h3 className="font-editorial text-2xl text-[#241B24] mb-2">
+                Want to See How These Packages Are Delivered?
+              </h3>
+              <p className="text-xs sm:text-sm text-[#746970] leading-relaxed font-light">
+                Explore the 5-step Creator Commerce Operating System, operational outputs, and the 30 / 60 / 90-day execution roadmap.
+              </p>
+            </div>
+            <Link
+              href="/process"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-xs bg-[#35172F] text-[#FAF8F4] hover:bg-[#51284B] transition-colors shrink-0"
+            >
+              <span>Explore How I Work</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <ClosingCta />
     </>
   );
