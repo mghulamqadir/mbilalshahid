@@ -233,9 +233,15 @@ function ContactFormInner() {
 
       {/* Field 5 (Optional): Service Dropdown + Target Market */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label htmlFor="service" className={LABEL_CLASS}>
-            What Do You Need Help With? <span className="text-[10px] text-[#746970] font-normal tracking-normal lowercase">(optional)</span>
+        <div className="flex flex-col justify-end">
+          <label
+            htmlFor="service"
+            className={`${LABEL_CLASS} sm:min-h-[1.75rem] flex items-end justify-between`}
+          >
+            <span>Service Interest</span>
+            <span className="text-[10px] text-[#746970] font-normal tracking-normal lowercase ml-1">
+              (optional)
+            </span>
           </label>
           <select
             id="service"
@@ -250,9 +256,15 @@ function ContactFormInner() {
           </select>
         </div>
 
-        <div>
-          <label htmlFor="targetMarket" className={LABEL_CLASS}>
-            Target Market <span className="text-[10px] text-[#746970] font-normal tracking-normal lowercase">(optional)</span>
+        <div className="flex flex-col justify-end">
+          <label
+            htmlFor="targetMarket"
+            className={`${LABEL_CLASS} sm:min-h-[1.75rem] flex items-end justify-between`}
+          >
+            <span>Target Market</span>
+            <span className="text-[10px] text-[#746970] font-normal tracking-normal lowercase ml-1">
+              (optional)
+            </span>
           </label>
           <select
             id="targetMarket"
