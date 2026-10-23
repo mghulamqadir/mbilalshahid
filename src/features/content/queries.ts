@@ -1,4 +1,21 @@
-import { cases, services, operatingSystemSteps, heroProof, careerTimeline, education, brandProjects, faqs, site, CaseStudy } from "@/content/seed";
+import {
+  cases,
+  services,
+  operatingSystemSteps,
+  heroProof,
+  careerTimeline,
+  education,
+  brandProjects,
+  faqs,
+  site,
+  packages,
+  testimonials,
+  roadmapPhases,
+  CaseStudy,
+  Package,
+  Testimonial,
+  RoadmapPhase,
+} from "@/content/seed";
 
 export async function getSiteSettings() {
   return site;
@@ -45,4 +62,16 @@ export async function getEducationAndProjects() {
 
 export async function getFaqs() {
   return faqs;
+}
+
+export async function getPackages(): Promise<Package[]> {
+  return packages.filter((p) => p.published);
+}
+
+export async function getTestimonials(): Promise<Testimonial[]> {
+  return testimonials.filter((t) => t.approved);
+}
+
+export async function getRoadmapPhases(): Promise<RoadmapPhase[]> {
+  return roadmapPhases;
 }

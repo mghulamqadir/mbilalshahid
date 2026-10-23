@@ -5,9 +5,9 @@ test.describe("Public Portfolio Navigation & Content", () => {
     await page.goto("/");
     await expect(page).toHaveTitle(/Bilal Shahid/i);
 
-    // Verify main headline
+    // Verify main headline matches TikTok Shop positioning
     const heading = page.locator("h1");
-    await expect(heading).toContainText(/Turning Attention Into/i);
+    await expect(heading).toContainText(/Scale on TikTok Shop|Turning Attention/i);
 
     // Verify verified proof metrics
     await expect(page.locator("text=4+").first()).toBeVisible();
@@ -33,7 +33,7 @@ test.describe("Public Portfolio Navigation & Content", () => {
     await expect(page.locator("article.card-editorial")).toHaveCount(2);
 
     // Click 'All Sectors' filter
-    await page.locator("button", { hasText: "All Sectors" }).click();
+    await page.locator("button", { hasText: /All Sectors/i }).click();
     await expect(page.locator("article.card-editorial")).toHaveCount(5);
   });
 
@@ -55,9 +55,9 @@ test.describe("Public Portfolio Navigation & Content", () => {
     await expect(page.locator('div[role="dialog"]')).not.toBeVisible();
   });
 
-  test("Services page renders all 6 capability pillars", async ({ page }) => {
+  test("Services page renders all 6 capability pillars and packages", async ({ page }) => {
     await page.goto("/services");
-    await expect(page.locator("h1")).toContainText(/Full-Funnel Commerce Services/i);
+    await expect(page.locator("h1")).toContainText(/TikTok Shop Growth Services|Full-Funnel Commerce Services/i);
     await expect(page.locator("text=Creator Sourcing & Scoring")).toBeVisible();
     await expect(page.locator("text=Multichannel Commerce Integration")).toBeVisible();
   });
@@ -71,7 +71,7 @@ test.describe("Public Portfolio Navigation & Content", () => {
 
   test("Contact page renders form and FAQ", async ({ page }) => {
     await page.goto("/contact");
-    await expect(page.locator("h1")).toContainText(/Start a Conversation/i);
+    await expect(page.locator("h1")).toContainText(/Request a Free Growth Audit|Start a Conversation/i);
     await expect(page.locator('input[placeholder="Jane Doe"]')).toBeVisible();
     await expect(page.locator("text=Common Questions")).toBeVisible();
   });

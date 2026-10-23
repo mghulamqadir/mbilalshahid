@@ -23,19 +23,38 @@ const caveat = Caveat({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://bilalshahid.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: `${site.name} — ${site.title}`,
     template: `%s | ${site.name}`,
   },
   description:
-    "Portfolio of Bilal Shahid: 4+ years scaling US & UK DTC brands through TikTok Shop operations, creator sourcing, sample seeding, and affiliate commerce ecosystems.",
+    "Bilal Shahid — TikTok Shop growth specialist helping US & UK brands scale through creator affiliate programmes, GMV Max campaigns, and Seller Center operations. 4+ years, documented results.",
   openGraph: {
     title: `${site.name} — ${site.title}`,
-    description: "TikTok Shop creator engine & multichannel e-commerce portfolio with source-backed case studies.",
+    description:
+      "TikTok Shop growth specialist for US & UK brands. Documented case studies with Seller Center evidence — creator affiliate programmes, GMV Max campaigns, and shop operations.",
     type: "website",
     locale: "en_US",
     siteName: site.name,
+    images: [
+      {
+        url: "/media/cases/thumb-apparel-q4.png",
+        width: 1200,
+        height: 630,
+        alt: "Bilal Shahid — TikTok Shop Growth Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — ${site.title}`,
+    description:
+      "TikTok Shop growth specialist for US & UK brands. Documented case studies with Seller Center evidence.",
+    images: ["/media/cases/thumb-apparel-q4.png"],
   },
 };
 

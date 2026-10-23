@@ -127,6 +127,8 @@ export const site = {
   experienceYears: "4+",
   maxShopsParallel: "5",
   disclaimer: "Independent specialist. Not affiliated with, endorsed by, or sponsored by TikTok.",
+  linkedin: "https://www.linkedin.com/in/bilalshahid-tiktokshop/", // placeholder — owner to update
+  twitter: undefined,
   nav: [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
@@ -826,5 +828,159 @@ export const faqs = [
     question: "Are outcomes guaranteed?",
     answer:
       "No ethical operator guarantees specific GMV because product-market fit, margin structure, and inventory availability vary. What I guarantee is disciplined execution, transparent reporting, and proven operating systems tested across multiple seven-figure shopping windows.",
+  },
+];
+
+
+export type Package = {
+  id: string;
+  name: string;
+  tagline: string;
+  bestFor: string;
+  deliverables: string[];
+  engagementStructure: string;
+  addOns: string[];
+  ctaLabel: string;
+  published: boolean;
+};
+
+export const packages: Package[] = [
+  {
+    id: "launch-setup",
+    name: "TikTok Shop Launch & Setup",
+    tagline: "Get your shop operational and ready for creator-driven sales.",
+    bestFor: "New brands entering TikTok Shop for the first time",
+    deliverables: [
+      "TikTok Shop Seller Center account review and configuration",
+      "Product listing optimisation — titles, descriptions, attributes, and images",
+      "Affiliate programme setup with initial commission structure",
+      "Creator ICP (Ideal Creator Profile) definition for your category",
+      "Initial creator outreach pipeline — first 50–100 prospects qualified",
+      "Seller Center compliance health check",
+    ],
+    engagementStructure: "One-time project engagement (4–6 weeks)",
+    addOns: [
+      "Shopify or Amazon integration setup",
+      "GMV Max campaign configuration",
+    ],
+    ctaLabel: "Request a Launch Consultation",
+    published: true,
+  },
+  {
+    id: "creator-affiliate-growth",
+    name: "Creator Affiliate Growth",
+    tagline: "Build a self-compounding creator programme that drives consistent daily sales.",
+    bestFor: "Brands with an operational shop that need stronger creator-generated revenue",
+    deliverables: [
+      "Ongoing creator sourcing, qualification, and outreach",
+      "Sample seeding coordination with budget gates and fulfillment tracking",
+      "Affiliate activation, tiered commission design, and cooperation chat management",
+      "Dormant affiliate re-engagement campaigns",
+      "Weekly performance reports — sample spend, post rates, creator GMV attribution",
+      "Top-creator retention with exclusive drop access and performance bonuses",
+    ],
+    engagementStructure: "Monthly retainer engagement (minimum 3 months)",
+    addOns: [
+      "GMV Max campaign coordination",
+      "Kalodata and FastMoss competitor tracking",
+    ],
+    ctaLabel: "Request an Affiliate Growth Audit",
+    published: true,
+  },
+  {
+    id: "full-growth-management",
+    name: "Full TikTok Shop Growth Management",
+    tagline: "End-to-end TikTok Shop operations — creator engine, shop management, and paid amplification.",
+    bestFor: "Established brands seeking ongoing shop operations and sustained GMV growth",
+    deliverables: [
+      "Everything in Creator Affiliate Growth, plus:",
+      "Full TikTok Shop Seller Center operations and campaign management",
+      "GMV Max automated and manual ad campaigns with 5x–15x ROI targets",
+      "Flash sales, product vouchers, free shipping campaigns, and bundle offers",
+      "Product listing SEO and conversion rate optimisation",
+      "LIVE stream scheduling and coordination",
+      "Weekly funnel diagnostics and monthly growth review",
+      "Multichannel sync — TikTok Shop to Shopify and/or Amazon",
+    ],
+    engagementStructure: "Monthly retainer engagement (minimum 3 months)",
+    addOns: [
+      "Dedicated creator manager coordination",
+      "Paid content amplification via Shop Ads",
+    ],
+    ctaLabel: "Request a Full Management Consultation",
+    published: true,
+  },
+];
+
+export type Testimonial = {
+  id: string;
+  name: string;
+  title: string;
+  company?: string;
+  quote: string;
+  source: "linkedin" | "email" | "agency";
+  approved: boolean;
+};
+
+export const testimonials: Testimonial[] = [
+  // Testimonials will be added once approved by the portfolio owner.
+  // Set approved: true to display a testimonial publicly.
+  // Example structure:
+  // {
+  //   id: "t1",
+  //   name: "Jane Smith",
+  //   title: "Founder",
+  //   company: "Brand Name",
+  //   quote: "Bilal built a creator engine that...",
+  //   source: "linkedin",
+  //   approved: false,
+  // },
+];
+
+export type RoadmapPhase = {
+  days: string;
+  title: string;
+  description: string;
+  items: string[];
+};
+
+export const roadmapPhases: RoadmapPhase[] = [
+  {
+    days: "Days 1–30",
+    title: "Audit & Foundation",
+    description: "Understand your shop, your products, and your ideal creator before spending a single sample.",
+    items: [
+      "TikTok Shop Seller Center audit — listings, health score, promotions config",
+      "Product positioning and hook angle development",
+      "Creator ICP definition — category, aesthetic, GMV history, post rate",
+      "Creator prospect pipeline: first 200–500 qualified outreach targets",
+      "Commission structure design and affiliate programme setup",
+      "Operational readiness check — inventory, fulfilment, response SLAs",
+    ],
+  },
+  {
+    days: "Days 31–60",
+    title: "Activation & Optimisation",
+    description: "Get content live, test what converts, and compound the strongest performers.",
+    items: [
+      "Sample dispatches to qualified creator shortlist",
+      "Personalised follow-up sequences to maximise post rates",
+      "First creator videos go live — monitor GMV attribution in Seller Center",
+      "A/B test commission tiers and promotional offers",
+      "Flash sale and voucher campaign coordination",
+      "Identify top-5 early performers and intensify collaboration",
+    ],
+  },
+  {
+    days: "Days 61–90",
+    title: "Scale & Reporting",
+    description: "Double down on proven creators, optimise ad spend, and build the next growth cycle.",
+    items: [
+      "Expand roster of proven high-converting creators",
+      "GMV Max campaign launch or optimisation (where applicable)",
+      "Dormant affiliate re-engagement and second-wave seeding",
+      "Full 90-day performance report — GMV, affiliate attribution, post rates, ROI",
+      "Roadmap for the next quarter: creator targets, product launches, and promotions",
+    ],
   },
 ];

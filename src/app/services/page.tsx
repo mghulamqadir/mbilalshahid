@@ -1,32 +1,77 @@
 import React from "react";
 import Link from "next/link";
-import { services } from "@/content/seed";
+import type { Metadata } from "next";
+import { getAllServices, getPackages } from "@/features/content/queries";
 import { ArrowUpRight, CheckIcon, SectionHeading } from "@/components/ui/primitives";
+import { PackageCard } from "@/components/ui/package-card";
 import { ClosingCta } from "@/components/ui/closing-cta";
 
-export const metadata = {
-  title: "Services & Capabilities",
-  description: "Full scope of TikTok Shop and creator-led commerce operations offered by Bilal Shahid.",
+export const metadata: Metadata = {
+  title: "TikTok Shop Services & Engagement Packages | Bilal Shahid",
+  description:
+    "Comprehensive TikTok Shop services: Launch & Setup, Creator Affiliate Growth, and Full Shop Management for US & UK e-commerce brands.",
+  openGraph: {
+    title: "TikTok Shop Services & Packages | Bilal Shahid",
+    description:
+      "From shop setup and creator outreach to GMV Max paid ads and multi-channel synchronization.",
+  },
+  alternates: {
+    canonical: "/services",
+  },
 };
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const [servicesList, packagesList] = await Promise.all([
+    getAllServices(),
+    getPackages(),
+  ]);
+
   return (
     <>
+      {/* ── Header ────────────────────────────────────────────────── */}
       <section className="pt-16 pb-12 md:pt-24 md:pb-16 bg-[#FAF8F4] border-b border-[#DDD3D7]">
         <div className="container-editorial">
           <SectionHeading
             as="h1"
             eyebrow="Operating Capabilities"
-            title="Full-Funnel Commerce Services"
-            subtitle="Tailored to the operating bottlenecks in front of your shop—from top-of-funnel creator recruitment to Seller Center inventory sync and paid GMV Max scaling."
+            title="TikTok Shop Growth Services"
+            subtitle="Tailored to the operating bottlenecks in front of your shop — from top-of-funnel creator recruitment to Seller Center inventory sync and paid GMV Max scaling."
           />
         </div>
       </section>
 
+      {/* ── Engagement Packages (Phase 6) ─────────────────────────── */}
+      {packagesList.length > 0 && (
+        <section className="py-16 md:py-24 bg-[#FFFCF8] border-b border-[#DDD3D7]">
+          <div className="container-editorial">
+            <SectionHeading
+              eyebrow="Engagement Models"
+              title="Three Structured Packages"
+              subtitle="Whether you need a full turnkey launch, accelerated affiliate growth, or continuous end-to-end management."
+            />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+              {packagesList.map((pkg, idx) => (
+                <PackageCard key={pkg.id} pkg={pkg} featured={idx === 2} />
+              ))}
+            </div>
+            <p className="text-[11px] text-[#746970] italic mt-6 text-center">
+              Pricing is customized per store based on catalogue size, sample volume, and requirements. No guaranteed sales or ROI.
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* ── Core Service Disciplines ───────────────────────────────── */}
       <section className="py-16 md:py-24 bg-[#FAF8F4]">
         <div className="container-editorial">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, idx) => (
+          <SectionHeading
+            eyebrow="Deep Disciplines"
+            title="Individual Operational Modules"
+            subtitle="The underlying systems and frameworks executed across all client engagements."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+            {servicesList.map((service, idx) => (
               <div
                 key={service.slug}
                 className="card-editorial p-8 flex flex-col justify-between"
@@ -51,7 +96,7 @@ export default function ServicesPage() {
 
                   <div className="pt-4 border-t border-[#DDD3D7]/60">
                     <span className="text-[11px] uppercase font-semibold text-[#51284B] block mb-3">
-                      Key Deliverables & Systems
+                      Key Deliverables &amp; Systems
                     </span>
                     <ul className="space-y-2.5">
                       {service.deliverables.map((item, dIdx) => (

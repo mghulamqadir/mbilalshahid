@@ -58,33 +58,56 @@ export async function POST(request: Request) {
       );
     }
 
-    const { fullName, email, brandWebsite, serviceInterest, monthlyRevenue, message, websiteHoneypot } =
-      result.data;
+    const {
+      fullName,
+      email,
+      brandWebsite,
+      targetMarket,
+      productCategory,
+      shopStage,
+      serviceInterest,
+      monthlyGmv,
+      monthlyRevenue,
+      message,
+      websiteHoneypot,
+    } = result.data;
 
     // Silent drop for bot submissions
     if (websiteHoneypot && websiteHoneypot.length > 0) {
       return NextResponse.json({ success: true, message: "Inquiry received" });
     }
 
+    const gmv = monthlyGmv || monthlyRevenue || "Not provided";
+    const market = targetMarket || "Not provided";
+    const category = productCategory || "Not provided";
+    const stage = shopStage || "Not provided";
+
     const safe = {
       fullName: escapeHtml(fullName),
       email: escapeHtml(email),
       brandWebsite: escapeHtml(brandWebsite),
+      targetMarket: escapeHtml(market),
+      productCategory: escapeHtml(category),
+      shopStage: escapeHtml(stage),
       serviceInterest: escapeHtml(serviceInterest),
-      monthlyRevenue: escapeHtml(monthlyRevenue || "Not provided"),
+      monthlyGmv: escapeHtml(gmv),
       message: escapeHtml(message).replace(/\n/g, "<br />"),
     };
-    const emailSubject = `New Portfolio Inquiry: ${brandWebsite} — ${fullName}`;
+
+    const emailSubject = `TikTok Shop Growth Audit Request: ${brandWebsite} — ${fullName}`;
     const emailBody = `
-New inquiry submitted via bilalshahid.com portfolio:
+New TikTok Shop Growth Audit inquiry submitted via portfolio:
 
 Name: ${fullName}
 Work Email: ${email}
 Brand / Store: ${brandWebsite}
-Area of Interest: ${serviceInterest}
-Current Monthly Revenue: ${monthlyRevenue || "Not provided"}
+Target Market: ${market}
+Product Category: ${category}
+Current Shop Stage: ${stage}
+Service Required: ${serviceInterest}
+Current Monthly GMV: ${gmv}
 
-Message / Goals:
+Goals & Challenges:
 ${message}
 
 Submitted at: ${new Date().toISOString()}
@@ -92,18 +115,21 @@ Submitted at: ${new Date().toISOString()}
 
     const emailHtml = `
 <div style="font-family: sans-serif; line-height: 1.6; color: #241B24; max-width: 600px; margin: 0 auto; border: 1px solid #DDD3D7; border-radius: 8px; padding: 24px;">
-  <h2 style="color: #35172F; margin-top: 0;">New Consultation Inquiry</h2>
+  <h2 style="color: #35172F; margin-top: 0;">New TikTok Shop Growth Audit Request</h2>
   <p><strong>Name:</strong> ${safe.fullName}</p>
   <p><strong>Work Email:</strong> ${safe.email}</p>
   <p><strong>Brand / Store:</strong> ${safe.brandWebsite}</p>
-  <p><strong>Area of Interest:</strong> ${safe.serviceInterest}</p>
-  <p><strong>Current Monthly Revenue:</strong> ${safe.monthlyRevenue}</p>
+  <p><strong>Target Market:</strong> ${safe.targetMarket}</p>
+  <p><strong>Product Category:</strong> ${safe.productCategory}</p>
+  <p><strong>Current Shop Stage:</strong> ${safe.shopStage}</p>
+  <p><strong>Service Required:</strong> ${safe.serviceInterest}</p>
+  <p><strong>Current Monthly GMV:</strong> ${safe.monthlyGmv}</p>
   <hr style="border: none; border-top: 1px solid #DDD3D7; margin: 20px 0;" />
-  <p><strong>Message / Goals:</strong></p>
+  <p><strong>Goals & Challenges:</strong></p>
   <blockquote style="background: #FAF8F4; border-left: 4px solid #35172F; margin: 0; padding: 12px 16px;">
     ${safe.message}
   </blockquote>
-  <p style="font-size: 12px; color: #746970; margin-top: 24px;">Received via Bilal Shahid Portfolio system.</p>
+  <p style="font-size: 12px; color: #746970; margin-top: 24px;">Received via Bilal Shahid Growth Portfolio system.</p>
 </div>
 `.trim();
 

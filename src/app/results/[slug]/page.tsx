@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { getAllCases, getCaseBySlug } from "@/features/content/queries";
 import { formatMetricValue } from "@/features/content/format";
 import { ImageLightbox } from "@/components/ui/image-lightbox";
@@ -10,6 +11,29 @@ import { ClosingCta } from "@/components/ui/closing-cta";
 export async function generateStaticParams() {
   const cases = await getAllCases();
   return cases.map((c) => ({ slug: c.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const study = await getCaseBySlug(slug);
+  if (!study) return { title: "Case Study Not Found | Bilal Shahid" };
+
+  return {
+    title: `${study.sector}: ${study.headlineOutcome} | Bilal Shahid`,
+    description: `${study.title}. ${study.summary}`,
+    openGraph: {
+      title: `${study.sector}: ${study.headlineOutcome} | TikTok Shop Case Study`,
+      description: study.summary,
+      type: "article",
+    },
+    alternates: {
+      canonical: `/results/${study.slug}`,
+    },
+  };
 }
 
 export default async function CaseStudyPage({
@@ -80,7 +104,7 @@ export default async function CaseStudyPage({
       <section className="py-12 md:py-16 bg-[#FFFCF8] border-b border-[#DDD3D7]">
         <div className="container-editorial">
           <h2 className="text-xs font-semibold uppercase tracking-widest text-[#746970] mb-8">
-            Observed Program KPIs & Metrics
+            Observed Program KPIs &amp; Metrics
           </h2>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -126,7 +150,7 @@ export default async function CaseStudyPage({
               {/* Approach */}
               <div>
                 <h3 className="font-editorial text-2xl md:text-3xl text-[#241B24] mb-4">
-                  The Creator & Commerce Strategy
+                  The Creator &amp; Commerce Strategy
                 </h3>
                 <p className="text-base text-[#746970] leading-relaxed mb-6">
                   {study.approach}
@@ -160,7 +184,7 @@ export default async function CaseStudyPage({
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <h3 className="font-editorial text-2xl md:text-3xl text-[#241B24]">
-                      Dashboard Proof & Evidence
+                      Dashboard Proof &amp; Evidence
                     </h3>
                     <p className="text-xs text-[#746970] mt-1">
                       Direct platform exports. Click any screenshot to open the high-resolution lightbox.
@@ -188,7 +212,7 @@ export default async function CaseStudyPage({
               {study.topCreators && study.topCreators.length > 0 && (
                 <div className="bg-[#FFFCF8] border border-[#DDD3D7] rounded-xl p-6 shadow-sm">
                   <h4 className="font-editorial text-lg text-[#241B24] mb-1">
-                    Featured Creators & Affiliates
+                    Featured Creators &amp; Affiliates
                   </h4>
                   <p className="text-xs text-[#746970] mb-4">
                     Creators active during this campaign period.
@@ -224,7 +248,7 @@ export default async function CaseStudyPage({
               {/* Data Integrity Box */}
               <div className="bg-[#FAF8F4] border border-[#DDD3D7] rounded-xl p-6 text-xs text-[#746970] space-y-2">
                 <span className="font-semibold text-[#241B24] block uppercase tracking-wider text-[10px]">
-                  Data & Integrity Disclosure
+                  Data &amp; Integrity Disclosure
                 </span>
                 <p>
                   Metrics reflect reported platform values from TikTok Shop Seller Center and Kalodata

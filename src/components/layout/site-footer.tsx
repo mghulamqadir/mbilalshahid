@@ -28,6 +28,17 @@ export function SiteFooter() {
                 <span>{site.email}</span>
                 <ArrowUpRight className="w-3 h-3" />
               </a>
+              {site.linkedin && (
+                <a
+                  href={site.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-[#FAF8F4] bg-[#51284B] px-3.5 py-2 rounded hover:bg-[#DCC9DA] hover:text-[#35172F] transition-colors"
+                >
+                  <span>LinkedIn Profile</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </a>
+              )}
               {site.whatsappUrl && site.phone && (
                 <a
                   href={site.whatsappUrl}
@@ -64,12 +75,12 @@ export function SiteFooter() {
               Core Capabilities
             </h4>
             <ul className="space-y-2 text-xs text-[#DCC9DA]/90">
-              <li>• Creator Sourcing & Aesthetic Scoring</li>
-              <li>• Seeding Logistics & PR Follow-Through</li>
-              <li>• Affiliate Marketplace Retention & Tiered Commissions</li>
-              <li>• TikTok Shop Seller Center & GMV Max Ads</li>
-              <li>• Multichannel Sync (Shopify & Amazon)</li>
-              <li>• Kalodata & Funnel Diagnostics</li>
+              <li>→ Creator Sourcing & Aesthetic Scoring</li>
+              <li>→ Seeding Logistics & PR Follow-Through</li>
+              <li>→ Affiliate Marketplace Retention & Tiered Commissions</li>
+              <li>→ TikTok Shop Seller Center & GMV Max Ads</li>
+              <li>→ Multichannel Sync (Shopify & Amazon)</li>
+              <li>→ Kalodata & Funnel Diagnostics</li>
             </ul>
           </div>
         </div>

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useSyncExternalStore } from "react";
 import Image from "next/image";
+import { trackEvent } from "@/lib/analytics";
 
 const emptySubscribe = () => () => {};
 
@@ -65,7 +66,10 @@ export function ImageLightbox({ src, alt, title, description }: ImageLightboxPro
         ref={triggerRef}
         type="button"
         data-hydrated={mounted}
-        onClick={() => setIsOpen(true)}
+        onClick={() => {
+          setIsOpen(true);
+          trackEvent("case_study_evidence_open", { case_slug: title || alt });
+        }}
         className="group relative w-full text-left cursor-zoom-in overflow-hidden rounded-xl border border-[#DDD3D7] bg-[#FFFCF8] shadow-sm transition-all duration-300 hover:border-[#51284B] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#51284B]"
         aria-label={`Enlarge proof image: ${alt}`}
       >

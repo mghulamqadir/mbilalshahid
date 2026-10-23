@@ -5,8 +5,17 @@ import { ArrowUpRight, ArrowRight, CheckIcon, SectionHeading, ButtonLink } from 
 import { ClosingCta } from "@/components/ui/closing-cta";
 
 export const metadata = {
-  title: "About Bilal Shahid",
-  description: "Biographical background, credentials, career timeline, and operational principles of Bilal Shahid.",
+  title: "About Bilal Shahid — TikTok Shop Growth Specialist",
+  description:
+    "4+ years building TikTok Shop creator affiliate programmes for US and UK brands. Career history at Technisia and Blue Star Manufacturing, MBA in Marketing & Branding, hands-on Seller Center operator.",
+  openGraph: {
+    title: "About Bilal Shahid — TikTok Shop Growth Specialist",
+    description:
+      "Meet Bilal Shahid: TikTok Shop and creator commerce specialist with 4+ years driving GMV growth for US and UK consumer brands.",
+  },
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {
