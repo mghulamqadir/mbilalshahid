@@ -16,6 +16,23 @@ import {
   Testimonial,
   RoadmapPhase,
 } from "@/content/seed";
+import { canonicalDossiers, CanonicalDossier } from "@/content/case-studies-data";
+
+export async function getCanonicalDossier(slug: string): Promise<CanonicalDossier | undefined> {
+  return canonicalDossiers[slug];
+}
+
+export async function getAllCanonicalDossiers(): Promise<CanonicalDossier[]> {
+  return Object.values(canonicalDossiers);
+}
+
+export async function getRelatedDossiers(slug: string): Promise<CanonicalDossier[]> {
+  const current = canonicalDossiers[slug];
+  if (!current) return [];
+  return current.relatedSlugs
+    .map((s) => canonicalDossiers[s])
+    .filter((d): d is CanonicalDossier => Boolean(d));
+}
 
 export async function getSiteSettings() {
   return site;

@@ -2,11 +2,19 @@ import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getAllCases, getCaseBySlug } from "@/features/content/queries";
+import {
+  getAllCases,
+  getCaseBySlug,
+  getCanonicalDossier,
+  getRelatedDossiers,
+} from "@/features/content/queries";
 import { formatMetricValue } from "@/features/content/format";
-import { ImageLightbox } from "@/components/ui/image-lightbox";
-import { ArrowRight, CheckIcon } from "@/components/ui/primitives";
-import { ClosingCta } from "@/components/ui/closing-cta";
+import { CaseStudyHero } from "@/components/case-studies/case-study-hero";
+import { CampaignSnapshot } from "@/components/case-studies/campaign-snapshot";
+import { CampaignNarrative } from "@/components/case-studies/campaign-narrative";
+import { EvidenceGallery } from "@/components/case-studies/evidence-gallery";
+import { RelatedCaseStudies } from "@/components/case-studies/related-case-studies";
+import { siteRoutes } from "@/content/navigation";
 
 export async function generateStaticParams() {
   const cases = await getAllCases();
@@ -19,223 +27,148 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  const dossier = await getCanonicalDossier(slug);
   const study = await getCaseBySlug(slug);
-  if (!study) return { title: "Case Study Not Found | Bilal Shahid" };
+
+  if (!dossier || !study) {
+    return { title: "Case Study Not Found | Bilal Shahid" };
+  }
 
   return {
-    title: `${study.sector}: ${study.headlineOutcome} | Bilal Shahid`,
-    description: `${study.title}. ${study.summary}`,
+    title: dossier.seoTitle,
+    description: dossier.seoDescription,
     openGraph: {
-      title: `${study.sector}: ${study.headlineOutcome} | TikTok Shop Case Study`,
-      description: study.summary,
+      title: `${dossier.sector}: ${dossier.headlineOutcome} | Bilal Shahid`,
+      description: dossier.seoDescription,
       type: "article",
+      url: `https://mbilalshahid.vercel.app/results/${dossier.slug}`,
+      images: [
+        {
+          url: dossier.cardData.thumbnail,
+          width: 1200,
+          height: 630,
+          alt: `${dossier.title} — Proof`,
+        },
+      ],
     },
     alternates: {
-      canonical: `/results/${study.slug}`,
+      canonical: `/results/${dossier.slug}`,
     },
   };
 }
 
-export default async function CaseStudyPage({
+export default async function CaseStudyDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const study = await getCaseBySlug(slug);
+  const dossier = await getCanonicalDossier(slug);
+  const legacyStudy = await getCaseBySlug(slug);
 
-  if (!study) {
+  if (!dossier || !legacyStudy) {
     notFound();
   }
 
-  const allCases = await getAllCases();
-  const currentIndex = allCases.findIndex((c) => c.slug === slug);
-  const nextCase = allCases[(currentIndex + 1) % allCases.length];
+  const relatedDossiers = await getRelatedDossiers(slug);
 
   return (
-    <>
-      {/* Dossier Header */}
-      <section className="pt-16 pb-12 md:pt-24 md:pb-16 bg-[#FAF8F4] border-b border-[#DDD3D7]">
-        <div className="container-editorial">
-          <div className="flex items-center gap-2 text-xs font-medium text-[#746970] mb-6">
-            <Link href="/results" className="hover:text-[#35172F]">
-              Case Studies
-            </Link>
-            <span>/</span>
-            <span className="text-[#35172F] font-semibold">{study.sector}</span>
-          </div>
+    <div className="bg-[#FAF7F2] min-h-screen text-[#241B24]">
+      {/* ── 01. BREADCRUMB + HERO ────────────────────────────────────── */}
+      <CaseStudyHero dossier={dossier} />
 
-          <div className="max-w-4xl">
-            <div className="flex flex-wrap items-center gap-3 mb-4">
-              <span className="badge-editorial">{study.sector}</span>
-              <span className="text-xs bg-[#EEE5E1] text-[#241B24] px-3 py-1 rounded-full font-medium">
-                {study.period.label}
-              </span>
-              <span className="text-xs text-[#746970] font-mono">{study.code}</span>
-            </div>
+      {/* ── 02. CAMPAIGN SNAPSHOT METRICS ────────────────────────────── */}
+      <CampaignSnapshot dossier={dossier} />
 
-            <h1 className="font-editorial text-3xl sm:text-5xl md:text-6xl text-[#241B24] leading-[1.12] mb-6">
-              {study.title}
-            </h1>
-
-            <p className="text-lg md:text-xl text-[#746970] leading-relaxed font-light mb-8">
-              {study.summary}
-            </p>
-
-            {/* Headline Result Callout */}
-            <div className="inline-flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 bg-[#35172F] text-[#FAF8F4] px-6 py-4 rounded-xl shadow-md">
-              <div>
-                <span className="text-[11px] uppercase tracking-wider text-[#DCC9DA] block font-medium">
-                  Reported Headline Outcome
-                </span>
-                <span className="font-editorial text-2xl sm:text-3xl font-semibold">
-                  {study.headlineOutcome}
-                </span>
-              </div>
-              <div className="text-xs text-[#DCC9DA] sm:border-l sm:border-[#51284B] sm:pl-6 max-w-xs">
-                Role: <strong>{study.role}</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* KPI Metrics Breakdown Grid */}
-      <section className="py-12 md:py-16 bg-[#FFFCF8] border-b border-[#DDD3D7]">
-        <div className="container-editorial">
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-[#746970] mb-8">
-            Observed Program KPIs &amp; Metrics
-          </h2>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {study.metrics.map((metric, idx) => (
-              <div
-                key={idx}
-                className="p-5 rounded-xl border border-[#DDD3D7] bg-[#FAF8F4]/60 flex flex-col justify-between"
-              >
-                <div>
-                  <span className="font-editorial text-2xl sm:text-3xl font-semibold text-[#35172F] block mb-1">
-                    {formatMetricValue(metric.value, metric.unit, metric.format ?? "auto")}
-                  </span>
-                  <span className="text-xs font-medium text-[#241B24] block">
-                    {metric.label}
-                  </span>
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-[#DDD3D7]/60 text-[11px] text-[#746970]">
-                  <span>{metric.footnote || `${metric.period.from} to ${metric.period.to}`}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Narrative & Strategy Section */}
+      {/* ── MAIN CONTENT CONTAINER (NARRATIVE + EVIDENCE + SIDEBAR) ─── */}
       <section className="py-16 md:py-24 bg-[#FAF8F4]">
         <div className="container-editorial">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-            {/* Main Narrative Column */}
-            <div className="lg:col-span-8 space-y-12">
-              {/* Challenge */}
-              <div>
-                <h3 className="font-editorial text-2xl md:text-3xl text-[#241B24] mb-4">
-                  The Operational Challenge
-                </h3>
-                <p className="text-base text-[#746970] leading-relaxed">
-                  {study.challenge}
-                </p>
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Primary Left Column: Sections 03, 04, 05, 06, 07, 08 */}
+            <div className="lg:col-span-8 space-y-16">
+              {/* Narrative Sections (03 Challenge, 04 Role, 05 Strategy, 08 Learnings) */}
+              <CampaignNarrative dossier={dossier} />
 
-              {/* Approach */}
-              <div>
-                <h3 className="font-editorial text-2xl md:text-3xl text-[#241B24] mb-4">
-                  The Creator &amp; Commerce Strategy
-                </h3>
-                <p className="text-base text-[#746970] leading-relaxed mb-6">
-                  {study.approach}
-                </p>
+              {/* ── 06. RESULTS & PERFORMANCE BREAKDOWN ──────────────── */}
+              <section className="space-y-6">
+                <div>
+                  <span className="text-[10px] font-semibold uppercase tracking-wider text-[#51284B] block mb-2">
+                    Section 06 · Full Metric Inventory
+                  </span>
+                  <h2 className="font-editorial text-2xl sm:text-3xl text-[#241B24] mb-2">
+                    Complete Performance Reporting
+                  </h2>
+                  <p className="text-xs sm:text-sm text-[#746970] leading-relaxed font-light">
+                    Every metric recorded across the campaign reporting period ({dossier.periodLabel}), with explicit attribution sources.
+                  </p>
+                </div>
 
-                <div className="space-y-3 bg-[#FFFCF8] p-6 rounded-xl border border-[#DDD3D7]">
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-[#51284B] mb-2">
-                    Core Operational Responsibilities
-                  </h4>
-                  {study.responsibilities.map((resp, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5 text-sm text-[#241B24]">
-                      <CheckIcon className="w-4 h-4 text-[#51284B] mt-0.5 shrink-0" />
-                      <span>{resp}</span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {legacyStudy.metrics.map((m, mIdx) => (
+                    <div
+                      key={mIdx}
+                      className="p-5 rounded-xl border border-[#DDD3D7] bg-[#FFFCF8] flex flex-col justify-between"
+                    >
+                      <div>
+                        <span className="font-editorial text-2xl sm:text-3xl font-bold text-[#35172F] block mb-1">
+                          {formatMetricValue(m.value, m.unit, m.format ?? "auto")}
+                        </span>
+                        <span className="text-xs font-semibold text-[#241B24] block leading-snug">
+                          {m.label}
+                        </span>
+                      </div>
+
+                      <div className="mt-4 pt-3 border-t border-[#DDD3D7]/60 text-[10px] text-[#746970] space-y-0.5">
+                        {m.footnote && <span className="block text-[#51284B] font-medium">{m.footnote}</span>}
+                        <span className="block font-mono">
+                          Period: {m.period.from} to {m.period.to}
+                        </span>
+                        <span className="block uppercase text-[9px] tracking-wider font-semibold text-[#746970]">
+                          Source: {m.source.replace(/_/g, " ")}
+                        </span>
+                      </div>
                     </div>
                   ))}
                 </div>
-              </div>
+              </section>
 
-              {/* Strategic Takeaway */}
-              <div className="p-6 rounded-xl bg-[#EEE5E1]/60 border-l-4 border-[#35172F]">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-[#35172F] mb-2">
-                  Operating Takeaway
-                </h4>
-                <p className="text-sm text-[#241B24] leading-relaxed italic font-editorial">
-                  &ldquo;{study.learning}&rdquo;
-                </p>
-              </div>
-
-              {/* Dashboard Evidence Gallery */}
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <div>
-                    <h3 className="font-editorial text-2xl md:text-3xl text-[#241B24]">
-                      Dashboard Proof &amp; Evidence
-                    </h3>
-                    <p className="text-xs text-[#746970] mt-1">
-                      Direct platform exports. Click any screenshot to open the high-resolution lightbox.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {study.evidence.map((proof, idx) => (
-                    <ImageLightbox
-                      key={idx}
-                      src={`/media/cases/${proof.filename}`}
-                      alt={proof.title}
-                      title={proof.title}
-                      description={proof.description}
-                    />
-                  ))}
-                </div>
-              </div>
+              {/* ── 07. EVIDENCE GALLERY ─────────────────────────────── */}
+              <EvidenceGallery dossier={dossier} />
             </div>
 
-            {/* Sidebar Column: Top Creators & Next Study */}
-            <div className="lg:col-span-4 space-y-8">
-              {/* Top Creators Roster Card */}
-              {study.topCreators && study.topCreators.length > 0 && (
-                <div className="bg-[#FFFCF8] border border-[#DDD3D7] rounded-xl p-6 shadow-sm">
-                  <h4 className="font-editorial text-lg text-[#241B24] mb-1">
+            {/* Sidebar Column: Creators, Governance & Direct Action */}
+            <aside aria-label="Campaign Highlights & Roster" className="lg:col-span-4 space-y-8 sticky top-28">
+              {/* Featured Creators & Affiliates Roster */}
+              {legacyStudy.topCreators && legacyStudy.topCreators.length > 0 && (
+                <div className="bg-[#FFFCF8] border border-[#DDD3D7] rounded-2xl p-6 sm:p-7 shadow-xs">
+                  <span className="text-[10px] uppercase font-semibold tracking-wider text-[#51284B] block mb-1">
+                    Affiliate Network
+                  </span>
+                  <h3 className="font-editorial text-xl text-[#241B24] font-semibold mb-1">
                     Featured Creators &amp; Affiliates
-                  </h4>
-                  <p className="text-xs text-[#746970] mb-4">
-                    Creators active during this campaign period.
+                  </h3>
+                  <p className="text-xs text-[#746970] mb-5 font-light">
+                    Active creator contributors during this campaign period.
                   </p>
 
                   <div className="space-y-3">
-                    {study.topCreators.map((creator, cIdx) => (
+                    {legacyStudy.topCreators.map((creator, cIdx) => (
                       <div
                         key={cIdx}
-                        className="p-3 rounded-lg bg-[#FAF8F4] border border-[#DDD3D7]/60 flex items-start justify-between gap-3"
+                        className="p-3.5 rounded-xl bg-[#FAF8F4] border border-[#DDD3D7]/60 flex items-start justify-between gap-3"
                       >
                         <div>
                           <span className="font-mono text-xs font-bold text-[#35172F] block">
                             {creator.handle}
                           </span>
                           {creator.note && (
-                            <span className="text-[11px] text-[#746970] block leading-tight mt-0.5">
+                            <span className="text-[11px] text-[#746970] block leading-tight mt-0.5 font-light">
                               {creator.note}
                             </span>
                           )}
                         </div>
                         {creator.gmv && (
-                          <span className="text-xs font-semibold text-[#51284B] shrink-0 bg-[#DCC9DA]/50 px-2 py-0.5 rounded">
+                          <span className="text-xs font-bold text-[#51284B] shrink-0 bg-[#DCC9DA]/50 px-2.5 py-1 rounded">
                             ${creator.gmv.toLocaleString()}
                           </span>
                         )}
@@ -245,43 +178,63 @@ export default async function CaseStudyPage({
                 </div>
               )}
 
-              {/* Data Integrity Box */}
-              <div className="bg-[#FAF8F4] border border-[#DDD3D7] rounded-xl p-6 text-xs text-[#746970] space-y-2">
+              {/* Campaign Quick Facts Card */}
+              <div className="bg-[#FAF8F4] border border-[#DDD3D7] rounded-2xl p-6 text-xs text-[#746970] space-y-3">
                 <span className="font-semibold text-[#241B24] block uppercase tracking-wider text-[10px]">
-                  Data &amp; Integrity Disclosure
+                  Campaign Metadata
                 </span>
-                <p>
-                  Metrics reflect reported platform values from TikTok Shop Seller Center and Kalodata
-                  during Bilal Shahid&apos;s active tenure ({study.period.label}).
-                </p>
-                <p>
-                  Total shop GMV and creator-attributed GMV are maintained as distinct metrics.
-                </p>
+                <div className="space-y-2 divide-y divide-[#DDD3D7]/60">
+                  <div className="pt-1 flex justify-between">
+                    <span>Market:</span>
+                    <strong className="text-[#241B24]">{dossier.market}</strong>
+                  </div>
+                  <div className="pt-2 flex justify-between">
+                    <span>Category:</span>
+                    <strong className="text-[#241B24]">{dossier.categoryLabel}</strong>
+                  </div>
+                  <div className="pt-2 flex justify-between">
+                    <span>Reporting Dates:</span>
+                    <strong className="text-[#241B24]">{dossier.periodLabel}</strong>
+                  </div>
+                  <div className="pt-2 flex justify-between">
+                    <span>Campaign Code:</span>
+                    <strong className="font-mono text-[#241B24]">{dossier.code}</strong>
+                  </div>
+                  <div className="pt-2 flex justify-between">
+                    <span>Attribution Scope:</span>
+                    <strong className="text-[#51284B]">Verified Dashboard</strong>
+                  </div>
+                </div>
               </div>
 
-              {/* Next Case Link */}
-              <div className="bg-[#35172F] text-[#FAF8F4] rounded-xl p-6">
-                <span className="text-[10px] uppercase font-semibold text-[#DCC9DA] block mb-2">
-                  Next Case Study
+              {/* Quick Inquiry Consultation Action */}
+              <div className="bg-[#35172F] text-[#FAF8F4] rounded-2xl p-6 sm:p-7 shadow-md">
+                <span className="text-[10px] uppercase font-semibold tracking-wider text-[#DCC9DA] block mb-2">
+                  Growth Consultation
                 </span>
-                <h4 className="font-editorial text-lg text-[#FAF8F4] mb-2">{nextCase.sector}</h4>
-                <p className="text-xs text-[#DCC9DA] mb-4 line-clamp-2">
-                  {nextCase.title}
+                <h4 className="font-editorial text-xl font-semibold mb-2">
+                  Run a Similar Campaign for Your Brand
+                </h4>
+                <p className="text-xs text-[#DCC9DA] leading-relaxed font-light mb-5">
+                  Have an apparel, sports nutrition, jewellery, or beauty brand? Let&apos;s discuss custom commission tiers and creator pipelines.
                 </p>
                 <Link
-                  href={`/results/${nextCase.slug}`}
-                  className="inline-flex items-center gap-2 text-xs font-semibold text-[#FAF8F4] hover:text-[#DCC9DA] underline underline-offset-4"
+                  href={`${siteRoutes.contact}?service=${encodeURIComponent(dossier.sector)}`}
+                  className="inline-flex items-center justify-center w-full py-3 rounded-full font-semibold text-xs bg-[#FAF8F4] text-[#35172F] hover:bg-[#DCC9DA] transition-colors"
                 >
-                  <span>View dossier</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <span>Request a Strategy Consultation</span>
                 </Link>
               </div>
-            </div>
+            </aside>
           </div>
         </div>
       </section>
 
-      <ClosingCta />
-    </>
+      {/* ── 09. RELATED CASE STUDIES + FINAL CTA ─────────────────────── */}
+      <RelatedCaseStudies
+        relatedDossiers={relatedDossiers}
+        currentSector={dossier.categoryLabel}
+      />
+    </div>
   );
 }
